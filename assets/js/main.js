@@ -23,35 +23,6 @@
     });
   }
 
-  /* ---------- background music ---------- */
-  var audio = document.getElementById('bgm');
-  var soundOn = true, playing = false, armed = false;
-  function setSoundUI() {
-    document.querySelectorAll('.snd-btn').forEach(function (b) {
-      b.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
-      b.setAttribute('aria-label', soundOn ? 'Mute background music' : 'Play background music');
-    });
-  }
-  function unlock(e) {
-    if (e && e.target && e.target.closest && e.target.closest('.snd-btn')) return;
-    disarm(); startAudio();
-  }
-  function arm() { if (armed) return; armed = true; ['pointerdown', 'keydown', 'touchend'].forEach(function (t) { window.addEventListener(t, unlock, true); }); }
-  function disarm() { if (!armed) return; armed = false; ['pointerdown', 'keydown', 'touchend'].forEach(function (t) { window.removeEventListener(t, unlock, true); }); }
-  function startAudio() {
-    if (!audio || !soundOn) return;
-    audio.volume = 0.45;
-    var p = audio.play();
-    if (p && p.then) p.then(function () { playing = true; disarm(); }).catch(arm);
-  }
-  document.querySelectorAll('.snd-btn').forEach(function (b) {
-    b.addEventListener('click', function () {
-      if (soundOn && playing) { audio.pause(); playing = false; soundOn = false; disarm(); }
-      else { soundOn = true; startAudio(); }
-      setSoundUI();
-    });
-  });
-
   /* ---------- scroll effects ---------- */
   var seen = {};
   var lastY = 0, navHidden = false;
@@ -163,6 +134,7 @@
     document.body.style.overflow = open ? 'hidden' : '';
     measure();
   }
+  window.KB = window.KB || {}; window.KB.closeMenu = function () { if (menuOpen) setMenu(false); };
   if (menuBtn) menuBtn.addEventListener('click', function () { setMenu(true); });
   M.querySelectorAll('.m-menu [aria-label="Close menu"]').forEach(function (b) { b.addEventListener('click', function () { setMenu(false); }); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && menuOpen) setMenu(false); });
@@ -190,9 +162,7 @@
     window.scrollTo({ top: Math.max(0, top), behavior: reduce ? 'auto' : 'smooth' });
   });
 
-  setSoundUI();
   syncVideo();
   measure();
   setTimeout(measure, 60);
-  startAudio();
 })();
