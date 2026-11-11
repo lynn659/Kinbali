@@ -3,7 +3,8 @@
   'use strict';
   var KB = window.KB || {};
   var mq = window.matchMedia('(max-width: 820px)');
-  var views = [document.querySelector('.v-d'), document.querySelector('.v-m')];
+  var PGT = document.getElementById('pg-tr');
+  var views = [PGT.querySelector('.v-d'), PGT.querySelector('.v-m')];
 
   /* ---------- filters + price toggle (with fade) ---------- */
   views.forEach(function (V) {
@@ -128,8 +129,8 @@
     sfxStop(c.getAttribute('data-num'));
   }
   function track(e) {
-    if (mq.matches) return;
-    var t = e.target && e.target.closest ? e.target.closest('.v-d .tr-card') : null;
+    if (mq.matches || PGT.hidden) return;
+    var t = e.target && e.target.closest ? e.target.closest('#pg-tr .v-d .tr-card') : null;
     if (t === cur) return;
     if (cur) leave(cur);
     cur = t;
@@ -149,9 +150,20 @@
         else if (en.intersectionRatio < 0.1 && v._seen) { v._seen = false; v._want = false; v.classList.remove('is-on'); v.pause(); }
       });
     }, { threshold: [0, 0.1, 0.6, 1] });
-    document.querySelectorAll('.v-m .tr-vid').forEach(function (v) { obs.observe(v); });
+    PGT.querySelectorAll('.v-m .tr-vid').forEach(function (v) { obs.observe(v); });
   }
 
-  /* desktop videos load only on desktop */
-  if (mq.matches) document.querySelectorAll('.v-d .tr-vid').forEach(function (v) { v.preload = 'none'; });
+  /* load hover media only when this page is on screen (desktop: videos + sounds, phone: videos) */
+  function prime() {
+    if (PGT.hidden) return;
+    var sel = mq.matches ? '.v-m .tr-vid[data-src]' : '.v-d .tr-vid[data-src], .tr-sfx[data-src]';
+    PGT.querySelectorAll(sel).forEach(function (m) { m.src = m.getAttribute('data-src'); m.removeAttribute('data-src'); try { m.load(); } catch (x) {} });
+  }
+  function hideAll() {
+    if (cur) { leave(cur); cur = null; }
+    PGT.querySelectorAll('.bk-scrim.is-open').forEach(function (s) { s.classList.remove('is-open'); });
+  }
+  (KB.hooks = KB.hooks || []).push(function (p) { if (p === 'treatments') prime(); else hideAll(); });
+  mq.addEventListener ? mq.addEventListener('change', prime) : mq.addListener(prime);
+  prime();
 })();

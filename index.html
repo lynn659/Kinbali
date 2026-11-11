@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css?v=2">
 <style>
 /* Main */
 .v-d .story-bg { background: url(assets/img/forest-bg.jpg) center / cover no-repeat; }
@@ -34,11 +34,16 @@
 .dot.is-on { background: var(--ink-brand); transform: scale(1.4); }
 .bar { position: sticky; bottom: 0; z-index: 20; display: flex; gap: 12px; padding: 12px 16px; background: var(--surface); border-top: 1px solid var(--line); box-sizing: border-box; }
 .bar .kb-btn { flex: 1 1 0; }
+/* Treatments */
+
+/* Treatments-Mobile */
+
 </style>
 </head>
 <body>
 <div class="pt-veil" aria-hidden="true"><div class="pt-mark"><img src="assets/img/logo.png" alt=""></div></div>
 <audio id="bgm" src="assets/media/bgm.mp4" loop preload="auto" aria-hidden="true"></audio>
+<div class="pg" id="pg-home" data-title="Kin Bali Massage — Balinese Massage in Johor">
 <div class="v-d">
 <div data-ref="pageRef" style="width: 100%; background: var(--surface); color: var(--ink); font-family: var(--font-en-sans), var(--font-cn-sans);">
   <header class="site-header is-clear">
@@ -782,7 +787,506 @@ Created for <em>Malaysia</em>.</h2></div></div>
 
 </div>
 </div>
-<script src="assets/js/common.js"></script>
-<script src="assets/js/main.js"></script>
+</div>
+<div class="pg" id="pg-tr" data-title="Treatments — Kin Bali Massage" hidden>
+<div class="v-d">
+<div class="tr-root " style="width: 100%; background: var(--surface); color: var(--ink); font-family: var(--font-en-sans), var(--font-cn-sans);">
+  <audio class="tr-sfx" data-sfx="01" data-src="assets/media/sfx-01.mp4" preload="auto" aria-hidden="true"></audio>
+  <audio class="tr-sfx" data-sfx="02" data-src="assets/media/sfx-02.mp4" preload="auto" aria-hidden="true"></audio>
+  <audio class="tr-sfx" data-sfx="03" data-src="assets/media/sfx-03.mp4" preload="auto" aria-hidden="true"></audio>
+  <audio class="tr-sfx" data-sfx="04" data-src="assets/media/sfx-04.mp4" preload="auto" aria-hidden="true"></audio>
+  <audio class="tr-sfx" data-sfx="05" data-src="assets/media/sfx-05.mp4" preload="auto" aria-hidden="true"></audio>
+  <audio class="tr-sfx" data-sfx="06" data-src="assets/media/sfx-06.mp4" preload="auto" aria-hidden="true"></audio>
+  <header class="site-header is-solid">
+    <div class="site-wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <a href="index.html" aria-label="Kin Bali Massage home" style="display: flex; align-items: center;"><img class="site-logo" src="assets/img/logo.png" alt="Kin Bali Massage" style="height: 40px; width: auto; display: block;"></a>
+      <nav class="site-nav-links" aria-label="Main" style="display: flex; align-items: center; gap: 40px; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase;">
+        <a class="nav-link" href="#tr-top" aria-current="page">Treatments</a>
+        <a class="nav-link" href="index.html">Outlets</a>
+        <a class="nav-link" href="index.html">App</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 24px;">
+        <a class="nav-link" href="#tr-top" lang="zh-Hans" aria-label="切换到中文版 (Switch to Chinese)" style="font-size: 14px; letter-spacing: 0.08em;">中文</a>
+        <button type="button" class="snd-btn" aria-label="Mute background music" aria-pressed="true" data-onclick="toggleSound">
+          <svg class="ico-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"></path><path d="M15.5 9a4 4 0 0 1 0 6"></path><path d="M18 6.5a7.5 7.5 0 0 1 0 11"></path></svg>
+          <svg class="ico-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"></path><path d="M16 9.5l5 5M21 9.5l-5 5"></path></svg>
+        </button>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <button type="button" class="kb-btn kb-btn--primary kb-btn--md" data-onclick="openBook">Book Now</button>
+          <a class="kb-btn kb-btn--secondary kb-btn--md" href="https://app.kinbali.com.my/login">Login</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Intro -->
+  <section id="tr-top" class="tr-intro">
+    <div class="site-wrap tr-intro__grid">
+      <div>
+        <p class="tr-crumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Treatments</span></p>
+        <div class="kb-headline kb-headline--display kb-headline--left is-en kb-pre"><h1 class="kb-headline__title">Find your moment
+of <em>serenity</em>.</h1></div>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 16px; padding-bottom: 8px;">
+        <p class="tr-lede">Six signature treatments and two indulgent packages, rooted in the Balinese art of relaxation.</p>
+        <p class="tr-lede" style="font-size: 13px; color: var(--ink-soft);">All prices in RM. Eco Botanic 2 is our premium outlet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter + price toggle -->
+  <div class="tr-bar">
+    <div class="site-wrap tr-bar__in">
+      <div class="tr-chips" role="group" aria-label="Filter treatments"><button type="button" class="tr-chip f-all is-on" aria-pressed="true" data-onclick="c.pick">All</button><button type="button" class="tr-chip f-foot" aria-pressed="false" data-onclick="c.pick">Foot care</button><button type="button" class="tr-chip f-body" aria-pressed="false" data-onclick="c.pick">Body massage</button><button type="button" class="tr-chip f-target" aria-pressed="false" data-onclick="c.pick">Targeted</button><button type="button" class="tr-chip f-pkg" aria-pressed="false" data-onclick="c.pick">Packages</button></div>
+      <div class="tr-tier"><span>Prices for</span><div class="tr-seg" role="group" aria-label="Show prices for"><button type="button" class="is-on" aria-pressed="true" data-onclick="pickTier0">Standard outlets</button><button type="button" class="" aria-pressed="false" data-onclick="pickTier1">Eco Botanic 2</button></div></div>
+    </div>
+  </div>
+
+  <!-- Treatments -->
+  <section class="tr-list js-grid" aria-label="Treatments">
+    <div class="site-wrap">
+      <div class="tr-grid">
+        
+          <article class="tr-card k-foot" data-num="01">
+            <div class="tr-media kb-tone--glow">
+              <img src="assets/img/treatment-01-foot.jpg" alt="Therapist pouring warm water over feet in a copper basin" style="object-position: center 60%;">
+              
+              <video class="tr-vid" data-src="assets/media/hover-01.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
+              <span class="tr-media__tag">Foot care</span>
+            </div>
+            <div class="tr-body">
+              <span class="tr-num">01 / 06</span>
+              <h3 class="tr-name">Balinese Foot Reflexology</h3>
+              <p class="tr-desc">Foot and lower-leg massage with targeted pressure-point work, for feet that are tired from standing and walking.</p>
+              <dl class="tr-prices">
+                <div class="tr-row"><dt>60 mins</dt><dd><small>RM</small><span class="px" data-p0="98" data-p1="108">98</span></dd></div><div class="tr-row"><dt>90 mins</dt><dd><small>RM</small><span class="px" data-p0="138" data-p1="148">138</span></dd></div>
+              </dl>
+              <div class="tr-actions"><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" data-onclick="t.book">Book Now</button></div>
+            </div>
+          </article>
+        
+          <article class="tr-card k-foot" data-num="02">
+            <div class="tr-media kb-tone--ochre">
+              <img src="assets/img/treatment-02-shoulder.jpg" alt="Therapist massaging a relaxed guest's neck and shoulders" style="object-position: center 40%;">
+              
+              <video class="tr-vid" data-src="assets/media/hover-02.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
+              <span class="tr-media__tag">Foot care</span>
+            </div>
+            <div class="tr-body">
+              <span class="tr-num">02 / 06</span>
+              <h3 class="tr-name">Balinese Foot & Shoulder Relaxation</h3>
+              <p class="tr-desc">A soothing foot massage followed by focused shoulder care, for long days on your feet or at a desk.</p>
+              <dl class="tr-prices">
+                <div class="tr-row"><dt>60 mins</dt><dd><small>RM</small><span class="px" data-p0="118" data-p1="128">118</span></dd></div><div class="tr-row"><dt>90 mins</dt><dd><small>RM</small><span class="px" data-p0="158" data-p1="168">158</span></dd></div><div class="tr-row"><dt>120 mins</dt><dd><small>RM</small><span class="px" data-p0="188" data-p1="198">188</span></dd></div>
+              </dl>
+              <div class="tr-actions"><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" data-onclick="t.book">Book Now</button></div>
+            </div>
+          </article>
+        
+          <article class="tr-card k-body" data-num="03">
+            <div class="tr-media kb-tone--walnut">
+              <img src="assets/img/treatment-03-oil.jpg" alt="Therapist pouring warm oil into her palm above a guest's back" style="object-position: center 55%;">
+              
+              <video class="tr-vid" data-src="assets/media/hover-03.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
+              <span class="tr-media__tag">Body massage</span>
+            </div>
+            <div class="tr-body">
+              <span class="tr-num">03 / 06</span>
+              <h3 class="tr-name">Balinese Oil Full Body Relaxation</h3>
+              <p class="tr-desc">Warm aromatic oils, long flowing strokes and gentle kneading for an unhurried, full-body session.</p>
+              <dl class="tr-prices">
+                <div class="tr-row"><dt>60 mins</dt><dd><small>RM</small><span class="px" data-p0="118" data-p1="128">118</span></dd></div><div class="tr-row"><dt>90 mins</dt><dd><small>RM</small><span class="px" data-p0="168" data-p1="178">168</span></dd></div><div class="tr-row"><dt>120 mins</dt><dd><small>RM</small><span class="px" data-p0="218" data-p1="228">218</span></dd></div>
+              </dl>
+              <div class="tr-actions"><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" data-onclick="t.book">Book Now</button></div>
+            </div>
+          </article>
+        
+          <article class="tr-card k-body" data-num="04">
+            <div class="tr-media kb-tone--walnut">
+              <img src="assets/img/treatment-04-classic.jpg" alt="Therapist pressing firmly along a guest's back" style="object-position: center 45%;">
+              
+              <video class="tr-vid" data-src="assets/media/hover-04.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
+              <span class="tr-media__tag">Body massage</span>
+            </div>
+            <div class="tr-body">
+              <span class="tr-num">04 / 06</span>
+              <h3 class="tr-name">Classic Full Body Relaxation Therapy</h3>
+              <p class="tr-desc">No oil, with firmer pressure, for muscle tightness and built-up tension.</p>
+              <dl class="tr-prices">
+                <div class="tr-row"><dt>60 mins</dt><dd><small>RM</small><span class="px" data-p0="108" data-p1="118">108</span></dd></div><div class="tr-row"><dt>90 mins</dt><dd><small>RM</small><span class="px" data-p0="158" data-p1="168">158</span></dd></div><div class="tr-row"><dt>120 mins</dt><dd><small>RM</small><span class="px" data-p0="188" data-p1="198">188</span></dd></div>
+              </dl>
+              <div class="tr-actions"><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" data-onclick="t.book">Book Now</button></div>
+            </div>
+          </article>
+        
+          <article class="tr-card k-body" data-num="05">
+            <div class="tr-media kb-tone--sand">
+              <img src="assets/img/treatment-05-lymphatic.jpg" alt="Therapist's hands working gently along a guest's back" style="object-position: center 60%;">
+              
+              <video class="tr-vid" data-src="assets/media/hover-05.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
+              <span class="tr-media__tag">Body massage</span>
+            </div>
+            <div class="tr-body">
+              <span class="tr-num">05 / 06</span>
+              <h3 class="tr-name">Full Body Lymphatic Detox</h3>
+              <p class="tr-desc">Gentle, rhythmic movements with a lighter touch to support lymphatic circulation, without deep pressure.</p>
+              <dl class="tr-prices">
+                <div class="tr-row"><dt>Per session</dt><dd><small>RM</small><span class="px" data-p0="298" data-p1="318">298</span></dd></div>
+              </dl>
+              <div class="tr-actions"><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" data-onclick="t.book">Book Now</button></div>
+            </div>
+          </article>
+        
+          <article class="tr-card k-target" data-num="06">
+            <div class="tr-media kb-tone--clay">
+              <img src="assets/img/treatment-06-head-back.jpg" alt="Close-up of a guest's neck and shoulder with a white orchid" style="object-position: center 45%;">
+              
+              <video class="tr-vid" data-src="assets/media/hover-06.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
+              <span class="tr-media__tag">Targeted massage</span>
+            </div>
+            <div class="tr-body">
+              <span class="tr-num">06 / 06</span>
+              <h3 class="tr-name">Head, Back & Shoulders</h3>
+              <p class="tr-desc">Direct-pressure work on the head, back and shoulders, for tension from work and screen time. Not a full-body treatment.</p>
+              <dl class="tr-prices">
+                <div class="tr-row"><dt>30 mins</dt><dd><small>RM</small><span class="px" data-p0="88" data-p1="98">88</span></dd></div><div class="tr-row"><dt>60 mins</dt><dd><small>RM</small><span class="px" data-p0="118" data-p1="128">118</span></dd></div>
+              </dl>
+              <div class="tr-actions"><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" data-onclick="t.book">Book Now</button></div>
+            </div>
+          </article>
+        
+      </div>
+      <p class="tr-note">Standard outlets: Forest City and Nusa Sentral. Premium outlet: Eco Botanic 2.</p>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section id="packages" class="tr-pkgs kb-night js-pkgs">
+    <div class="site-wrap">
+      <div class="tr-intro__grid">
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <div class="kb-headline kb-headline--display kb-headline--left is-en"><h2 class="kb-headline__title">Packages</h2></div>
+        </div>
+        <p class="tr-lede" style="padding-bottom: 8px;">Our favourite treatments, paired into one longer visit. Choose a package, then pick the option that suits you.</p>
+      </div>
+      <div style="margin-top: 56px;">
+        <div class="pc-stack">
+        
+          <article class="pc-stage ">
+            <div class="pc-media"><img src="assets/img/treatment-03-oil.jpg" alt="Warm oil being poured for a full-body massage" style="object-position: center 55%;"></div>
+            <div class="pc-menu">
+              <span class="pc-kicker">90 – 110 mins</span>
+              <h3 class="pc-name">Double Indulgence</h3>
+              <p class="pc-tag">Two rituals. One indulgent escape.</p>
+              
+              <div class="pc-list">
+                
+                  <div class="pc-item"><span class="pc-rom">I</span><div class="pc-line"><b>The Oil Indulgence</b><i aria-hidden="true"></i><span>RM <span class="px" data-p0="178" data-p1="188">178</span></span></div><div class="pc-what">Balinese Foot Reflexology + Balinese Oil Full Body Relaxation<em>90 mins</em></div><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" aria-label="Book The Oil Indulgence" data-onclick="o.book">Book</button></div>
+                
+                  <div class="pc-item"><span class="pc-rom">II</span><div class="pc-line"><b>The Classic Escape</b><i aria-hidden="true"></i><span>RM <span class="px" data-p0="168" data-p1="178">168</span></span></div><div class="pc-what">Balinese Foot Reflexology + Classic Full Body Relaxation Therapy<em>90 mins</em></div><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" aria-label="Book The Classic Escape" data-onclick="o.book">Book</button></div>
+                
+                  <div class="pc-item"><span class="pc-rom">III</span><div class="pc-line"><b>The Skin Renewal</b><i aria-hidden="true"></i><span>RM <span class="px" data-p0="238" data-p1="248">238</span></span></div><div class="pc-what">Balinese Foot Reflexology + Balinese Full Body Scrub<em>110 mins</em></div><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" aria-label="Book The Skin Renewal" data-onclick="o.book">Book</button></div>
+                
+              </div>
+              
+            </div>
+          </article>
+        
+          <article class="pc-stage ">
+            <div class="pc-media"><img src="assets/img/treatment-05-lymphatic.jpg" alt="Therapist's hands working gently along a guest's back" style="object-position: center 60%;"></div>
+            <div class="pc-menu">
+              <span class="pc-kicker">3 hours and more</span>
+              <h3 class="pc-name">Balinese Signature Therapy</h3>
+              <p class="pc-tag">Three hours, dedicated to you.</p>
+              
+              <div class="pc-list">
+                
+                  <div class="pc-item"><span class="pc-rom">I</span><div class="pc-line"><b>The Classic Signature</b><i aria-hidden="true"></i><span>RM <span class="px" data-p0="288" data-p1="298">288</span></span></div><div class="pc-what">60 min Foot Reflexology · 90 min Classic Full Body · 30 min Ear Candle<em>180 mins</em></div><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" aria-label="Book The Classic Signature" data-onclick="o.book">Book</button></div>
+                
+                  <div class="pc-item"><span class="pc-rom">II</span><div class="pc-line"><b>The Aromatic Signature</b><i aria-hidden="true"></i><span>RM <span class="px" data-p0="318" data-p1="328">318</span></span></div><div class="pc-what">60 min Foot Reflexology · 90 min Oil Full Body · 30 min Full Body Scrub<em>180 mins</em></div><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" aria-label="Book The Aromatic Signature" data-onclick="o.book">Book</button></div>
+                
+                  <div class="pc-item"><span class="pc-rom">III</span><div class="pc-line"><b>The Extended Signature</b><i aria-hidden="true"></i><span>RM <span class="px" data-p0="338" data-p1="348">338</span></span></div><div class="pc-what">90 min Foot Reflexology · 120 min Oil Full Body<em>210 mins</em></div><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" aria-label="Book The Extended Signature" data-onclick="o.book">Book</button></div>
+                
+              </div>
+              <div class="pc-gift pc-gift--b"><div class="pc-gift__head"><span class="pc-gift__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="8.5" width="17" height="4" rx="1"></rect><path d="M5 12.5v8h14v-8M12 8.5v12"></path><path d="M12 8.5C10.5 5 7 4.5 7 7c0 1.5 2.5 1.5 5 1.5zM12 8.5c1.5-3.5 5-4 5-1.5 0 1.5-2.5 1.5-5 1.5z"></path></svg></span><span><b>Complimentary add-on</b><small>Pick one, on us, with any Signature option</small></span></div><ul class="pc-gift__list"><li>Warming Uterus & Abdominal</li><li>Full Body Scrub</li><li>Deep Back Cupping</li><li>Ear Candle</li><li>Gua Sha</li><li>Hot Stone Foot</li><li>Hot Stone Body</li></ul></div>
+            </div>
+          </article>
+        
+      </div>
+      </div>
+      <p class="pc-note" style="margin-top: 24px;">Prices shown for <span class="tl" data-p0="Forest City &amp; Nusa Sentral" data-p1="Eco Botanic 2 (premium)">Forest City &amp; Nusa Sentral</span>. Use the price toggle above to switch.</p>
+    </div>
+  </section>
+
+  <footer style="background: var(--earth-cocoa); color: var(--light-rice); padding: 64px 0 40px;">
+    <div class="site-wrap" style="display: flex; flex-direction: column; gap: 40px;">
+      <div class="site-foot">
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <img src="assets/img/logo.png" alt="Kin Bali Massage" style="height: 48px; width: auto; align-self: flex-start;">
+          <p style="margin: 0; font-size: 12px; line-height: 16px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--light-butter);">Take a break. Breathe in Bali.</p>
+        </div>
+        <nav aria-label="Explore" style="display: flex; flex-direction: column; gap: 16px; font-size: 14px; letter-spacing: 0.04em;">
+          <span style="font-size: 12px; letter-spacing: 0.24em; color: var(--light-butter);">EXPLORE</span>
+          <a href="#tr-top" style="color: var(--light-rice); text-decoration: none;">Signature Treatments</a>
+          <a href="index.html" style="color: var(--light-rice); text-decoration: none;">Our Outlets</a>
+          <a href="index.html" style="color: var(--light-rice); text-decoration: none;">Membership</a>
+        </nav>
+        <nav aria-label="Connect" style="display: flex; flex-direction: column; gap: 16px; font-size: 14px; letter-spacing: 0.04em;">
+          <span style="font-size: 12px; letter-spacing: 0.24em; color: var(--light-butter);">CONNECT</span>
+          <div class="wa-wrap "><button type="button" class="wa-trigger" aria-expanded="false" aria-haspopup="true" data-onclick="toggleWa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg>WhatsApp</button><div class="wa-pop" role="menu" aria-label="Choose an outlet"><div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Forest City</span><span class="wa-area">Forest City, Gelang Patah</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60128478080" target="_blank" rel="noopener">Book</a></div><div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Eco Botanic 2</span><span class="wa-area">Eco Botanic, Iskandar Puteri</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60182286655" target="_blank" rel="noopener">Book</a></div><div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Nusa Sentral</span><span class="wa-area">Taman Nusa Sentral, Iskandar Puteri</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60127586655" target="_blank" rel="noopener">Book</a></div></div></div>
+          <a href="https://www.instagram.com/kinbalimassage/" target="_blank" rel="noopener" style="color: var(--light-rice); text-decoration: none;">Instagram</a>
+          <a href="https://www.facebook.com/kinbalimassage/" target="_blank" rel="noopener" style="color: var(--light-rice); text-decoration: none;">Facebook</a>
+        </nav>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid var(--earth-walnut); font-size: 12px; letter-spacing: 0.08em; color: var(--light-butter);">
+        <span>© 2026 KIN BALI MASSAGE. All rights reserved.</span>
+        <span>Terms of Use · Privacy Policy</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="bk-scrim " data-onclick="scrimClick">
+    <div class="wa-pop" role="dialog" aria-modal="true" aria-label="Choose an outlet">
+      <button type="button" class="bk-close" aria-label="Close" data-onclick="closeBook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+      <p class="wa-pop__label">CHOOSE AN OUTLET</p>
+      <p class="bk-for">Your visit</p>
+      
+        <div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Forest City</span><span class="wa-area">Forest City, Gelang Patah</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60128478080" target="_blank" rel="noopener">Book</a></div>
+      
+        <div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Eco Botanic 2</span><span class="wa-area">Eco Botanic, Iskandar Puteri · Premium</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60182286655" target="_blank" rel="noopener">Book</a></div>
+      
+        <div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Nusa Sentral</span><span class="wa-area">Taman Nusa Sentral, Iskandar Puteri</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60127586655" target="_blank" rel="noopener">Book</a></div>
+      
+    </div>
+  </div>
+</div>
+</div>
+<div class="v-m">
+<div class="phone tr-root " style="position: relative; background: var(--surface); color: var(--ink); font-family: var(--font-en-sans), var(--font-cn-sans);">
+
+  <header style="display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 64px; padding: 0 16px; box-sizing: border-box; background: var(--surface);">
+    <a href="index.html" aria-label="Kin Bali Massage home" style="display: flex;"><img class="site-logo" src="assets/img/logo.png" alt="Kin Bali Massage" style="height: 24px; width: auto; display: block;"></a>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <a href="#t-top" lang="zh-Hans" aria-label="切换到中文版 (Switch to Chinese)" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; font-size: 13px; letter-spacing: 0.06em; color: var(--ink); text-decoration: none;">中文</a>
+      <button type="button" class="kb-btn kb-btn--primary kb-btn--sm" data-onclick="openBook">Book Now</button>
+    </div>
+  </header>
+
+  <section id="t-top" style="padding: 32px 16px 28px; display: flex; flex-direction: column; gap: 16px;">
+    <p class="tr-crumb" style="margin: 0 0 4px;"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Treatments</span></p>
+    <div class="kb-headline kb-headline--title kb-headline--left is-en kb-pre kb-story-m"><h1 class="kb-headline__title">Find your moment
+of <em>serenity</em>.</h1></div>
+    <p class="tr-lede" style="font-size: 14px;">Six signature treatments and two indulgent packages, rooted in the Balinese art of relaxation.</p>
+    <div class="tr-tier" style="flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 4px;"><span>Prices for</span><div class="tr-seg" role="group" aria-label="Show prices for"><button type="button" class="is-on" aria-pressed="true" data-onclick="pickTier0">Standard outlets</button><button type="button" class="" aria-pressed="false" data-onclick="pickTier1">Eco Botanic 2</button></div></div>
+  </section>
+
+  <div class="trm-chips" role="group" aria-label="Filter treatments"><button type="button" class="tr-chip f-all is-on" aria-pressed="true" data-onclick="c.pick">All</button><button type="button" class="tr-chip f-foot" aria-pressed="false" data-onclick="c.pick">Foot care</button><button type="button" class="tr-chip f-body" aria-pressed="false" data-onclick="c.pick">Body massage</button><button type="button" class="tr-chip f-target" aria-pressed="false" data-onclick="c.pick">Targeted</button><button type="button" class="tr-chip f-pkg" aria-pressed="false" data-onclick="c.pick">Packages</button></div>
+
+  <section class="js-grid" aria-label="Treatments" style="padding: 28px 16px 56px; display: flex; flex-direction: column; gap: 48px;">
+    
+          <article class="tr-card trm-card k-foot">
+            <div class="tr-media kb-tone--glow">
+              <img src="assets/img/treatment-01-foot.jpg" alt="Therapist pouring warm water over feet in a copper basin" style="object-position: center 60%;">
+              
+              <video class="tr-vid" data-src="assets/media/hover-01.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
+              <span class="tr-media__tag">Foot care</span>
+            </div>
+            <div class="tr-body">
+              <span class="tr-num">01 / 06</span>
+              <h3 class="tr-name">Balinese Foot Reflexology</h3>
+              <p class="tr-desc">Foot and lower-leg massage with targeted pressure-point work, for feet that are tired from standing and walking.</p>
+              <dl class="tr-prices">
+                <div class="tr-row"><dt>60 mins</dt><dd><small>RM</small><span class="px" data-p0="98" data-p1="108">98</span></dd></div><div class="tr-row"><dt>90 mins</dt><dd><small>RM</small><span class="px" data-p0="138" data-p1="148">138</span></dd></div>
+              </dl>
+              <div class="tr-actions"><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" data-onclick="t.book">Book Now</button></div>
+            </div>
+          </article>
+        
+          <article class="tr-card trm-card k-foot">
+            <div class="tr-media kb-tone--ochre">
+              <img src="assets/img/treatment-02-shoulder.jpg" alt="Therapist massaging a relaxed guest's neck and shoulders" style="object-position: center 40%;">
+              
+              <video class="tr-vid" data-src="assets/media/hover-02.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
+              <span class="tr-media__tag">Foot care</span>
+            </div>
+            <div class="tr-body">
+              <span class="tr-num">02 / 06</span>
+              <h3 class="tr-name">Balinese Foot & Shoulder Relaxation</h3>
+              <p class="tr-desc">A soothing foot massage followed by focused shoulder care, for long days on your feet or at a desk.</p>
+              <dl class="tr-prices">
+                <div class="tr-row"><dt>60 mins</dt><dd><small>RM</small><span class="px" data-p0="118" data-p1="128">118</span></dd></div><div class="tr-row"><dt>90 mins</dt><dd><small>RM</small><span class="px" data-p0="158" data-p1="168">158</span></dd></div><div class="tr-row"><dt>120 mins</dt><dd><small>RM</small><span class="px" data-p0="188" data-p1="198">188</span></dd></div>
+              </dl>
+              <div class="tr-actions"><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" data-onclick="t.book">Book Now</button></div>
+            </div>
+          </article>
+        
+          <article class="tr-card trm-card k-body">
+            <div class="tr-media kb-tone--walnut">
+              <img src="assets/img/treatment-03-oil.jpg" alt="Therapist pouring warm oil into her palm above a guest's back" style="object-position: center 55%;">
+              
+              <video class="tr-vid" data-src="assets/media/hover-03.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
+              <span class="tr-media__tag">Body massage</span>
+            </div>
+            <div class="tr-body">
+              <span class="tr-num">03 / 06</span>
+              <h3 class="tr-name">Balinese Oil Full Body Relaxation</h3>
+              <p class="tr-desc">Warm aromatic oils, long flowing strokes and gentle kneading for an unhurried, full-body session.</p>
+              <dl class="tr-prices">
+                <div class="tr-row"><dt>60 mins</dt><dd><small>RM</small><span class="px" data-p0="118" data-p1="128">118</span></dd></div><div class="tr-row"><dt>90 mins</dt><dd><small>RM</small><span class="px" data-p0="168" data-p1="178">168</span></dd></div><div class="tr-row"><dt>120 mins</dt><dd><small>RM</small><span class="px" data-p0="218" data-p1="228">218</span></dd></div>
+              </dl>
+              <div class="tr-actions"><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" data-onclick="t.book">Book Now</button></div>
+            </div>
+          </article>
+        
+          <article class="tr-card trm-card k-body">
+            <div class="tr-media kb-tone--walnut">
+              <img src="assets/img/treatment-04-classic.jpg" alt="Therapist pressing firmly along a guest's back" style="object-position: center 45%;">
+              
+              <video class="tr-vid" data-src="assets/media/hover-04.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
+              <span class="tr-media__tag">Body massage</span>
+            </div>
+            <div class="tr-body">
+              <span class="tr-num">04 / 06</span>
+              <h3 class="tr-name">Classic Full Body Relaxation Therapy</h3>
+              <p class="tr-desc">No oil, with firmer pressure, for muscle tightness and built-up tension.</p>
+              <dl class="tr-prices">
+                <div class="tr-row"><dt>60 mins</dt><dd><small>RM</small><span class="px" data-p0="108" data-p1="118">108</span></dd></div><div class="tr-row"><dt>90 mins</dt><dd><small>RM</small><span class="px" data-p0="158" data-p1="168">158</span></dd></div><div class="tr-row"><dt>120 mins</dt><dd><small>RM</small><span class="px" data-p0="188" data-p1="198">188</span></dd></div>
+              </dl>
+              <div class="tr-actions"><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" data-onclick="t.book">Book Now</button></div>
+            </div>
+          </article>
+        
+          <article class="tr-card trm-card k-body">
+            <div class="tr-media kb-tone--sand">
+              <img src="assets/img/treatment-05-lymphatic.jpg" alt="Therapist's hands working gently along a guest's back" style="object-position: center 60%;">
+              
+              <video class="tr-vid" data-src="assets/media/hover-05.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
+              <span class="tr-media__tag">Body massage</span>
+            </div>
+            <div class="tr-body">
+              <span class="tr-num">05 / 06</span>
+              <h3 class="tr-name">Full Body Lymphatic Detox</h3>
+              <p class="tr-desc">Gentle, rhythmic movements with a lighter touch to support lymphatic circulation, without deep pressure.</p>
+              <dl class="tr-prices">
+                <div class="tr-row"><dt>Per session</dt><dd><small>RM</small><span class="px" data-p0="298" data-p1="318">298</span></dd></div>
+              </dl>
+              <div class="tr-actions"><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" data-onclick="t.book">Book Now</button></div>
+            </div>
+          </article>
+        
+          <article class="tr-card trm-card k-target">
+            <div class="tr-media kb-tone--clay">
+              <img src="assets/img/treatment-06-head-back.jpg" alt="Close-up of a guest's neck and shoulder with a white orchid" style="object-position: center 45%;">
+              
+              <video class="tr-vid" data-src="assets/media/hover-06.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
+              <span class="tr-media__tag">Targeted massage</span>
+            </div>
+            <div class="tr-body">
+              <span class="tr-num">06 / 06</span>
+              <h3 class="tr-name">Head, Back & Shoulders</h3>
+              <p class="tr-desc">Direct-pressure work on the head, back and shoulders, for tension from work and screen time. Not a full-body treatment.</p>
+              <dl class="tr-prices">
+                <div class="tr-row"><dt>30 mins</dt><dd><small>RM</small><span class="px" data-p0="88" data-p1="98">88</span></dd></div><div class="tr-row"><dt>60 mins</dt><dd><small>RM</small><span class="px" data-p0="118" data-p1="128">118</span></dd></div>
+              </dl>
+              <div class="tr-actions"><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" data-onclick="t.book">Book Now</button></div>
+            </div>
+          </article>
+        
+    <p class="tr-note" style="margin: 0; line-height: 1.7;">Standard outlets: Forest City and Nusa Sentral. Premium outlet: Eco Botanic 2. All prices in RM.</p>
+  </section>
+
+  <section class="kb-night js-pkgs" style="padding: 56px 16px; display: flex; flex-direction: column; gap: 28px;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center;">
+      <div class="kb-headline kb-headline--title kb-headline--center is-en kb-story-m"><h2 class="kb-headline__title">Packages</h2></div>
+      <p class="tr-lede" style="font-size: 14px;">Our favourite treatments, paired into one longer visit.</p>
+    </div>
+    <div class="pc-stack">
+        
+          <article class="pc-stage pc-stage--m">
+            <div class="pc-media"><img src="assets/img/treatment-03-oil.jpg" alt="Warm oil being poured for a full-body massage" style="object-position: center 55%;"></div>
+            <div class="pc-menu">
+              <span class="pc-kicker">90 – 110 mins</span>
+              <h3 class="pc-name">Double Indulgence</h3>
+              <p class="pc-tag">Two rituals. One indulgent escape.</p>
+              
+              <div class="pc-list">
+                
+                  <div class="pc-item"><span class="pc-rom">I</span><div class="pc-line"><b>The Oil Indulgence</b><i aria-hidden="true"></i><span>RM <span class="px" data-p0="178" data-p1="188">178</span></span></div><div class="pc-what">Balinese Foot Reflexology + Balinese Oil Full Body Relaxation<em>90 mins</em></div><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" aria-label="Book The Oil Indulgence" data-onclick="o.book">Book</button></div>
+                
+                  <div class="pc-item"><span class="pc-rom">II</span><div class="pc-line"><b>The Classic Escape</b><i aria-hidden="true"></i><span>RM <span class="px" data-p0="168" data-p1="178">168</span></span></div><div class="pc-what">Balinese Foot Reflexology + Classic Full Body Relaxation Therapy<em>90 mins</em></div><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" aria-label="Book The Classic Escape" data-onclick="o.book">Book</button></div>
+                
+                  <div class="pc-item"><span class="pc-rom">III</span><div class="pc-line"><b>The Skin Renewal</b><i aria-hidden="true"></i><span>RM <span class="px" data-p0="238" data-p1="248">238</span></span></div><div class="pc-what">Balinese Foot Reflexology + Balinese Full Body Scrub<em>110 mins</em></div><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" aria-label="Book The Skin Renewal" data-onclick="o.book">Book</button></div>
+                
+              </div>
+              
+            </div>
+          </article>
+        
+          <article class="pc-stage pc-stage--m">
+            <div class="pc-media"><img src="assets/img/treatment-05-lymphatic.jpg" alt="Therapist's hands working gently along a guest's back" style="object-position: center 60%;"></div>
+            <div class="pc-menu">
+              <span class="pc-kicker">3 hours and more</span>
+              <h3 class="pc-name">Balinese Signature Therapy</h3>
+              <p class="pc-tag">Three hours, dedicated to you.</p>
+              
+              <div class="pc-list">
+                
+                  <div class="pc-item"><span class="pc-rom">I</span><div class="pc-line"><b>The Classic Signature</b><i aria-hidden="true"></i><span>RM <span class="px" data-p0="288" data-p1="298">288</span></span></div><div class="pc-what">60 min Foot Reflexology · 90 min Classic Full Body · 30 min Ear Candle<em>180 mins</em></div><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" aria-label="Book The Classic Signature" data-onclick="o.book">Book</button></div>
+                
+                  <div class="pc-item"><span class="pc-rom">II</span><div class="pc-line"><b>The Aromatic Signature</b><i aria-hidden="true"></i><span>RM <span class="px" data-p0="318" data-p1="328">318</span></span></div><div class="pc-what">60 min Foot Reflexology · 90 min Oil Full Body · 30 min Full Body Scrub<em>180 mins</em></div><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" aria-label="Book The Aromatic Signature" data-onclick="o.book">Book</button></div>
+                
+                  <div class="pc-item"><span class="pc-rom">III</span><div class="pc-line"><b>The Extended Signature</b><i aria-hidden="true"></i><span>RM <span class="px" data-p0="338" data-p1="348">338</span></span></div><div class="pc-what">90 min Foot Reflexology · 120 min Oil Full Body<em>210 mins</em></div><button type="button" class="kb-btn kb-btn--primary kb-btn--sm" aria-label="Book The Extended Signature" data-onclick="o.book">Book</button></div>
+                
+              </div>
+              <div class="pc-gift pc-gift--b"><div class="pc-gift__head"><span class="pc-gift__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="8.5" width="17" height="4" rx="1"></rect><path d="M5 12.5v8h14v-8M12 8.5v12"></path><path d="M12 8.5C10.5 5 7 4.5 7 7c0 1.5 2.5 1.5 5 1.5zM12 8.5c1.5-3.5 5-4 5-1.5 0 1.5-2.5 1.5-5 1.5z"></path></svg></span><span><b>Complimentary add-on</b><small>Pick one, on us, with any Signature option</small></span></div><ul class="pc-gift__list"><li>Warming Uterus & Abdominal</li><li>Full Body Scrub</li><li>Deep Back Cupping</li><li>Ear Candle</li><li>Gua Sha</li><li>Hot Stone Foot</li><li>Hot Stone Body</li></ul></div>
+            </div>
+          </article>
+        
+      </div>
+    <p class="pc-note">Prices shown for <span class="tl" data-p0="Forest City &amp; Nusa Sentral" data-p1="Eco Botanic 2 (premium)">Forest City &amp; Nusa Sentral</span>.</p>
+  </section>
+
+  <footer id="tr-m-contact" style="background: var(--earth-cocoa); color: var(--light-rice); padding: 48px 16px 32px; display: flex; flex-direction: column; gap: 28px;">
+    <img src="assets/img/logo.png" alt="Kin Bali Massage" style="height: 40px; width: auto; align-self: flex-start;">
+    <div style="position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
+      <nav aria-label="Explore" style="display: flex; flex-direction: column; gap: 10px; font-size: 16px;">
+        <span style="margin-bottom: 4px; font-size: 10px; letter-spacing: 0.28em; color: var(--light-glow);">EXPLORE</span>
+        <a href="#t-top" style="color: var(--light-rice); text-decoration: none;">Treatments</a>
+        <a href="index.html" style="color: var(--light-rice); text-decoration: none;">Outlets</a>
+        <a href="index.html" style="color: var(--light-rice); text-decoration: none;">Membership</a>
+      </nav>
+      <nav aria-label="Connect" style="display: flex; flex-direction: column; gap: 10px; font-size: 16px;">
+        <span style="margin-bottom: 4px; font-size: 10px; letter-spacing: 0.28em; color: var(--light-glow);">CONNECT</span>
+        <div class="wa-wrap wa-wrap--m "><button type="button" class="wa-trigger" aria-expanded="false" aria-haspopup="true" data-onclick="toggleWa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg>WhatsApp</button><div class="wa-pop wa-pop--m" role="menu" aria-label="Choose an outlet"><div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Forest City</span><span class="wa-area">Forest City, Gelang Patah</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60128478080" target="_blank" rel="noopener">Book</a></div><div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Eco Botanic 2</span><span class="wa-area">Eco Botanic, Iskandar Puteri</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60182286655" target="_blank" rel="noopener">Book</a></div><div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Nusa Sentral</span><span class="wa-area">Taman Nusa Sentral, Iskandar Puteri</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60127586655" target="_blank" rel="noopener">Book</a></div></div></div>
+        <a href="https://www.instagram.com/kinbalimassage/" target="_blank" rel="noopener" style="color: var(--light-rice); text-decoration: none;">Instagram</a>
+        <a href="https://www.facebook.com/kinbalimassage/" target="_blank" rel="noopener" style="color: var(--light-rice); text-decoration: none;">Facebook</a>
+      </nav>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px; padding-top: 20px; border-top: 1px solid var(--earth-walnut); font-size: 8.5px; letter-spacing: 0.08em; color: var(--light-butter);">
+      <span>Terms of Use · Privacy Policy</span>
+      <span>© 2026 KIN BALI MASSAGE. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <div class="bk-scrim " data-onclick="scrimClick">
+    <div class="wa-pop" role="dialog" aria-modal="true" aria-label="Choose an outlet">
+      <button type="button" class="bk-close" aria-label="Close" data-onclick="closeBook"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+      <p class="wa-pop__label">CHOOSE AN OUTLET</p>
+      <p class="bk-for">Your visit</p>
+      
+        <div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Forest City</span><span class="wa-area">Forest City, Gelang Patah</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60128478080" target="_blank" rel="noopener">Book</a></div>
+      
+        <div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Eco Botanic 2</span><span class="wa-area">Eco Botanic, Iskandar Puteri · Premium</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60182286655" target="_blank" rel="noopener">Book</a></div>
+      
+        <div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Nusa Sentral</span><span class="wa-area">Taman Nusa Sentral, Iskandar Puteri</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60127586655" target="_blank" rel="noopener">Book</a></div>
+      
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<script src="assets/js/common.js?v=2"></script>
+<script src="assets/js/main.js?v=2"></script>
+<script src="assets/js/treatments.js?v=2"></script>
 </body>
 </html>

@@ -13,8 +13,27 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css?v=2">
 <style>
+/* Main */
+.v-d .story-bg { background: url(assets/img/forest-bg.jpg) center / cover no-repeat; }
+/* Mobile */
+.v-m .story-bg { background: url(assets/img/forest-bg.jpg) center / cover no-repeat; }
+#m-story > * { position: relative; }
+#m-story > .v-m .story-bg { position: absolute; }
+
+
+.m-header { position: sticky; top: 0; z-index: 20; margin-bottom: -64px; background-color: transparent; transition: background-color .5s var(--ease), box-shadow .5s var(--ease), transform .45s var(--ease); }
+.m-header.is-hidden { transform: translateY(-100%); box-shadow: none; }
+.m-header.is-solid { background-color: var(--surface); box-shadow: 0 1px 0 var(--line); }
+.m-rail { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-left: 16px; padding: 8px 16px 24px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.m-rail::-webkit-scrollbar { display: none; }
+.m-rail > * { flex: 0 0 auto; scroll-snap-align: start; width: 300px; }
+.dots { display: flex; justify-content: center; gap: 8px; }
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--line); transition: background-color .3s var(--ease), transform .3s var(--ease); }
+.dot.is-on { background: var(--ink-brand); transform: scale(1.4); }
+.bar { position: sticky; bottom: 0; z-index: 20; display: flex; gap: 12px; padding: 12px 16px; background: var(--surface); border-top: 1px solid var(--line); box-sizing: border-box; }
+.bar .kb-btn { flex: 1 1 0; }
 /* Treatments */
 
 /* Treatments-Mobile */
@@ -24,24 +43,770 @@
 <body>
 <div class="pt-veil" aria-hidden="true"><div class="pt-mark"><img src="assets/img/logo.png" alt=""></div></div>
 <audio id="bgm" src="assets/media/bgm.mp4" loop preload="auto" aria-hidden="true"></audio>
+<div class="pg" id="pg-home" data-title="Kin Bali Massage — Balinese Massage in Johor" hidden>
+<div class="v-d">
+<div data-ref="pageRef" style="width: 100%; background: var(--surface); color: var(--ink); font-family: var(--font-en-sans), var(--font-cn-sans);">
+  <header class="site-header is-clear">
+    <div class="site-wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+      <a href="#top" aria-label="Kin Bali Massage home" style="display: flex; align-items: center;"><img class="site-logo" src="assets/img/logo.png" alt="Kin Bali Massage" style="height: 40px; width: auto; display: block;"></a>
+      <nav class="site-nav-links" aria-label="Main" style="display: flex; align-items: center; gap: 40px; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase;">
+        <a class="nav-link" href="treatments.html">Treatments</a>
+        <a class="nav-link" href="#outlets">Outlets</a>
+        <a class="nav-link" href="#membership">App</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 24px;">
+        <a class="nav-link" href="#top" lang="zh-Hans" aria-label="切换到中文版 (Switch to Chinese)" style="font-size: 14px; letter-spacing: 0.08em;">中文</a>
+        <button type="button" class="snd-btn" aria-label="Mute background music" aria-pressed="true" data-onclick="toggleSound">
+          <svg class="ico-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"></path><path d="M15.5 9a4 4 0 0 1 0 6"></path><path d="M18 6.5a7.5 7.5 0 0 1 0 11"></path></svg>
+          <svg class="ico-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"></path><path d="M16 9.5l5 5M21 9.5l-5 5"></path></svg>
+        </button>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <a class="kb-btn kb-btn--primary kb-btn--md" href="#outlets">Book Now</a>
+          <a class="kb-btn kb-btn--secondary kb-btn--md" href="https://app.kinbali.com.my/login">Login</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero: 16:9 video, copy and buttons centred over it -->
+  <section id="top" class="hero-video">
+    <div class="px-layer" style="transform: var(--heroVideoShift, none);">
+      <video data-src="assets/media/hero.mp4" muted loop playsinline preload="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+    </div>
+    <div class="hero-shade" style="background: rgba(42, 31, 23, 0.42);"></div>
+    <div class="kb-night hero-copy" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 96px 24px; box-sizing: border-box; background: transparent;">
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 40px; max-width: 760px; text-align: center; transform: var(--heroTextShift, none); opacity: var(--heroTextFade, 1); will-change: transform, opacity;">
+        <div class="kb-headline kb-headline--display kb-headline--center is-en kb-pre"><h1 class="kb-headline__title">Escape the noise.
+Embrace <em>serenity</em>.</h1><p class="kb-headline__subtitle">A moment of calm, inspired by the art of Balinese massage.</p></div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; align-items: center;">
+          <a class="kb-btn kb-btn--primary kb-btn--md" href="#outlets">Book Now</a>
+          <a class="kb-btn kb-btn--secondary kb-btn--md" href="treatments.html">Explore treatments</a>
+        </div>
+      </div>
+      <a href="#treatments" class="scroll-cue hero-cue" style="position: absolute; left: 50%; bottom: 32px; transform: translateX(-50%); text-decoration: none; opacity: var(--heroTextFade, 1);">SCROLL<i></i></a>
+    </div>
+  </section>
+
+  <!-- Signature treatments: coverflow carousel, feature card in the middle, auto-advances every 3.5s -->
+  <section id="treatments" style="padding: 104px 0; overflow: hidden;">
+    <div class="site-wrap" style="display: flex; flex-direction: column; gap: 40px;">
+      <div class="reveal js-in-treat" data-ref="treatRef" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;">
+        <h2 class="kb-section-title kb-section-title--lg kb-section-title--left"><span class="kb-section-title__label">Signature Treatments</span><span class="kb-section-title__rule" aria-hidden="true"></span></h2>
+        <a class="kb-btn kb-btn--link kb-btn--md" href="treatments.html">More</a>
+      </div>
+      <div class="cf reveal reveal-2 js-in-treat" data-ontouchstart="cfTouchStart" data-ontouchend="cfTouchEnd">
+        <div class="cf-glow" aria-hidden="true"></div>
+        
+          <div class="cf-item p0" data-onmouseenter="t.enter" data-onmouseleave="cfLeave" aria-hidden="false">
+            <div class="cf-photo kb-tone--glow">
+              <div class="cf-photo-inner"><img class="cf-img" src="assets/img/treatment-01-foot.jpg" alt="Therapist pouring warm water over feet in a copper basin" style="object-position: center 60%;"></div>
+            </div>
+            <div class="cf-copy">
+              <span class="cf-num">01 / 03</span>
+              <span class="kb-tag kb-tag--outline">Feet</span>
+              <h3 class="cf-name">Balinese Foot Reflexology</h3>
+              <p class="cf-desc">A restorative foot ritual inspired by traditional Balinese techniques.</p>
+              <div class="cf-foot">
+                <span class="cf-price">From RM 98</span>
+                <span style="display: flex; align-items: center; gap: 16px;">
+                  <a class="kb-btn kb-btn--link kb-btn--sm" href="treatments.html">Details</a>
+                  <a class="kb-btn kb-btn--primary kb-btn--sm" href="#outlets">Book Now</a>
+                </span>
+              </div>
+            </div>
+            <button type="button" class="cf-hit" aria-label="Show Balinese Foot Reflexology" tabindex="-1" data-onclick="t.go"></button>
+          </div>
+        
+          <div class="cf-item p1" data-onmouseenter="t.enter" data-onmouseleave="cfLeave" aria-hidden="false">
+            <div class="cf-photo kb-tone--ochre">
+              <div class="cf-photo-inner"><img class="cf-img" src="assets/img/treatment-02-shoulder.jpg" alt="Therapist massaging a relaxed guest's neck and shoulders" style="object-position: center 40%;"></div>
+            </div>
+            <div class="cf-copy">
+              <span class="cf-num">02 / 03</span>
+              <span class="kb-tag kb-tag--outline">Feet · Shoulders</span>
+              <h3 class="cf-name">Balinese Foot & Shoulder Relaxation</h3>
+              <p class="cf-desc">The perfect balance of soothing foot massage and tension-relieving shoulder care.</p>
+              <div class="cf-foot">
+                <span class="cf-price">From RM 118</span>
+                <span style="display: flex; align-items: center; gap: 16px;">
+                  <a class="kb-btn kb-btn--link kb-btn--sm" href="treatments.html">Details</a>
+                  <a class="kb-btn kb-btn--primary kb-btn--sm" href="#outlets">Book Now</a>
+                </span>
+              </div>
+            </div>
+            <button type="button" class="cf-hit" aria-label="Show Balinese Foot & Shoulder Relaxation" tabindex="0" data-onclick="t.go"></button>
+          </div>
+        
+          <div class="cf-item p2" data-onmouseenter="t.enter" data-onmouseleave="cfLeave" aria-hidden="false">
+            <div class="cf-photo kb-tone--walnut">
+              <div class="cf-photo-inner"><img class="cf-img" src="assets/img/treatment-03-oil.jpg" alt="Therapist pouring warm oil into her palm above a guest's back" style="object-position: center 55%;"></div>
+            </div>
+            <div class="cf-copy">
+              <span class="cf-num">03 / 03</span>
+              <span class="kb-tag kb-tag--outline">Full body</span>
+              <h3 class="cf-name">Balinese Oil Full Body Relaxation</h3>
+              <p class="cf-desc">Warm oils and flowing massage techniques for a deeply relaxing experience.</p>
+              <div class="cf-foot">
+                <span class="cf-price">From RM 118</span>
+                <span style="display: flex; align-items: center; gap: 16px;">
+                  <a class="kb-btn kb-btn--link kb-btn--sm" href="treatments.html">Details</a>
+                  <a class="kb-btn kb-btn--primary kb-btn--sm" href="#outlets">Book Now</a>
+                </span>
+              </div>
+            </div>
+            <button type="button" class="cf-hit" aria-label="Show Balinese Oil Full Body Relaxation" tabindex="0" data-onclick="t.go"></button>
+          </div>
+        
+          <div class="cf-item p3" data-onmouseenter="t.enter" data-onmouseleave="cfLeave" aria-hidden="true">
+            <div class="cf-photo kb-tone--glow">
+              <div class="cf-photo-inner"><img class="cf-img" src="assets/img/treatment-01-foot.jpg" alt="Therapist pouring warm water over feet in a copper basin" style="object-position: center 60%;"></div>
+            </div>
+            <div class="cf-copy">
+              <span class="cf-num">01 / 03</span>
+              <span class="kb-tag kb-tag--outline">Feet</span>
+              <h3 class="cf-name">Balinese Foot Reflexology</h3>
+              <p class="cf-desc">A restorative foot ritual inspired by traditional Balinese techniques.</p>
+              <div class="cf-foot">
+                <span class="cf-price">From RM 98</span>
+                <span style="display: flex; align-items: center; gap: 16px;">
+                  <a class="kb-btn kb-btn--link kb-btn--sm" href="treatments.html">Details</a>
+                  <a class="kb-btn kb-btn--primary kb-btn--sm" href="#outlets">Book Now</a>
+                </span>
+              </div>
+            </div>
+            <button type="button" class="cf-hit" aria-label="Show Balinese Foot Reflexology" tabindex="-1" data-onclick="t.go"></button>
+          </div>
+        
+          <div class="cf-item p4" data-onmouseenter="t.enter" data-onmouseleave="cfLeave" aria-hidden="true">
+            <div class="cf-photo kb-tone--ochre">
+              <div class="cf-photo-inner"><img class="cf-img" src="assets/img/treatment-02-shoulder.jpg" alt="Therapist massaging a relaxed guest's neck and shoulders" style="object-position: center 40%;"></div>
+            </div>
+            <div class="cf-copy">
+              <span class="cf-num">02 / 03</span>
+              <span class="kb-tag kb-tag--outline">Feet · Shoulders</span>
+              <h3 class="cf-name">Balinese Foot & Shoulder Relaxation</h3>
+              <p class="cf-desc">The perfect balance of soothing foot massage and tension-relieving shoulder care.</p>
+              <div class="cf-foot">
+                <span class="cf-price">From RM 118</span>
+                <span style="display: flex; align-items: center; gap: 16px;">
+                  <a class="kb-btn kb-btn--link kb-btn--sm" href="treatments.html">Details</a>
+                  <a class="kb-btn kb-btn--primary kb-btn--sm" href="#outlets">Book Now</a>
+                </span>
+              </div>
+            </div>
+            <button type="button" class="cf-hit" aria-label="Show Balinese Foot & Shoulder Relaxation" tabindex="-1" data-onclick="t.go"></button>
+          </div>
+        
+          <div class="cf-item m4" data-onmouseenter="t.enter" data-onmouseleave="cfLeave" aria-hidden="true">
+            <div class="cf-photo kb-tone--walnut">
+              <div class="cf-photo-inner"><img class="cf-img" src="assets/img/treatment-03-oil.jpg" alt="Therapist pouring warm oil into her palm above a guest's back" style="object-position: center 55%;"></div>
+            </div>
+            <div class="cf-copy">
+              <span class="cf-num">03 / 03</span>
+              <span class="kb-tag kb-tag--outline">Full body</span>
+              <h3 class="cf-name">Balinese Oil Full Body Relaxation</h3>
+              <p class="cf-desc">Warm oils and flowing massage techniques for a deeply relaxing experience.</p>
+              <div class="cf-foot">
+                <span class="cf-price">From RM 118</span>
+                <span style="display: flex; align-items: center; gap: 16px;">
+                  <a class="kb-btn kb-btn--link kb-btn--sm" href="treatments.html">Details</a>
+                  <a class="kb-btn kb-btn--primary kb-btn--sm" href="#outlets">Book Now</a>
+                </span>
+              </div>
+            </div>
+            <button type="button" class="cf-hit" aria-label="Show Balinese Oil Full Body Relaxation" tabindex="-1" data-onclick="t.go"></button>
+          </div>
+        
+          <div class="cf-item m3" data-onmouseenter="t.enter" data-onmouseleave="cfLeave" aria-hidden="true">
+            <div class="cf-photo kb-tone--glow">
+              <div class="cf-photo-inner"><img class="cf-img" src="assets/img/treatment-01-foot.jpg" alt="Therapist pouring warm water over feet in a copper basin" style="object-position: center 60%;"></div>
+            </div>
+            <div class="cf-copy">
+              <span class="cf-num">01 / 03</span>
+              <span class="kb-tag kb-tag--outline">Feet</span>
+              <h3 class="cf-name">Balinese Foot Reflexology</h3>
+              <p class="cf-desc">A restorative foot ritual inspired by traditional Balinese techniques.</p>
+              <div class="cf-foot">
+                <span class="cf-price">From RM 98</span>
+                <span style="display: flex; align-items: center; gap: 16px;">
+                  <a class="kb-btn kb-btn--link kb-btn--sm" href="treatments.html">Details</a>
+                  <a class="kb-btn kb-btn--primary kb-btn--sm" href="#outlets">Book Now</a>
+                </span>
+              </div>
+            </div>
+            <button type="button" class="cf-hit" aria-label="Show Balinese Foot Reflexology" tabindex="-1" data-onclick="t.go"></button>
+          </div>
+        
+          <div class="cf-item m2" data-onmouseenter="t.enter" data-onmouseleave="cfLeave" aria-hidden="false">
+            <div class="cf-photo kb-tone--ochre">
+              <div class="cf-photo-inner"><img class="cf-img" src="assets/img/treatment-02-shoulder.jpg" alt="Therapist massaging a relaxed guest's neck and shoulders" style="object-position: center 40%;"></div>
+            </div>
+            <div class="cf-copy">
+              <span class="cf-num">02 / 03</span>
+              <span class="kb-tag kb-tag--outline">Feet · Shoulders</span>
+              <h3 class="cf-name">Balinese Foot & Shoulder Relaxation</h3>
+              <p class="cf-desc">The perfect balance of soothing foot massage and tension-relieving shoulder care.</p>
+              <div class="cf-foot">
+                <span class="cf-price">From RM 118</span>
+                <span style="display: flex; align-items: center; gap: 16px;">
+                  <a class="kb-btn kb-btn--link kb-btn--sm" href="treatments.html">Details</a>
+                  <a class="kb-btn kb-btn--primary kb-btn--sm" href="#outlets">Book Now</a>
+                </span>
+              </div>
+            </div>
+            <button type="button" class="cf-hit" aria-label="Show Balinese Foot & Shoulder Relaxation" tabindex="0" data-onclick="t.go"></button>
+          </div>
+        
+          <div class="cf-item m1" data-onmouseenter="t.enter" data-onmouseleave="cfLeave" aria-hidden="false">
+            <div class="cf-photo kb-tone--walnut">
+              <div class="cf-photo-inner"><img class="cf-img" src="assets/img/treatment-03-oil.jpg" alt="Therapist pouring warm oil into her palm above a guest's back" style="object-position: center 55%;"></div>
+            </div>
+            <div class="cf-copy">
+              <span class="cf-num">03 / 03</span>
+              <span class="kb-tag kb-tag--outline">Full body</span>
+              <h3 class="cf-name">Balinese Oil Full Body Relaxation</h3>
+              <p class="cf-desc">Warm oils and flowing massage techniques for a deeply relaxing experience.</p>
+              <div class="cf-foot">
+                <span class="cf-price">From RM 118</span>
+                <span style="display: flex; align-items: center; gap: 16px;">
+                  <a class="kb-btn kb-btn--link kb-btn--sm" href="treatments.html">Details</a>
+                  <a class="kb-btn kb-btn--primary kb-btn--sm" href="#outlets">Book Now</a>
+                </span>
+              </div>
+            </div>
+            <button type="button" class="cf-hit" aria-label="Show Balinese Oil Full Body Relaxation" tabindex="0" data-onclick="t.go"></button>
+          </div>
+        
+      </div>
+      <div class="acc-progress" role="tablist" aria-label="Treatments">
+        
+          <button type="button" role="tab" aria-selected="true" class="acc-seg is-on" data-onclick="t.pick">
+            <span class="acc-track"><span class="acc-fill run-b"></span></span>
+            <span class="acc-seg__label">01 · Balinese Foot Reflexology</span>
+          </button>
+        
+          <button type="button" role="tab" aria-selected="false" class="acc-seg " data-onclick="t.pick">
+            <span class="acc-track"><span class="acc-fill "></span></span>
+            <span class="acc-seg__label">02 · Balinese Foot & Shoulder Relaxation</span>
+          </button>
+        
+          <button type="button" role="tab" aria-selected="false" class="acc-seg " data-onclick="t.pick">
+            <span class="acc-track"><span class="acc-fill "></span></span>
+            <span class="acc-seg__label">03 · Balinese Oil Full Body Relaxation</span>
+          </button>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Story: photo parallax, copy reveals -->
+  <section id="story" class="kb-night" style="position: relative; background: var(--leaf-jungle); padding: 104px 0; overflow: hidden;">
+    <div class="px-layer story-bg" aria-hidden="true" style="transform: var(--storyBgShift, none);"></div>
+    <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(24, 28, 16, 0.45); pointer-events: none;"></div>
+    <div class="site-wrap site-story" style="position: relative;">
+      <div class="px-frame site-photo-tall" role="img" aria-label="Kin Bali Massage outlet interior" style="width: 100%; aspect-ratio: 504 / 740; max-height: 740px;">
+        <div class="px-layer kb-tone--clay" style="top: 0; height: 112%; transform: var(--storyPhotoShift, none);"><img src="assets/img/outlet-interior.jpg" alt="Kin Bali Massage outlet reception with warm lighting and carved wooden stools" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: right top;"></div>
+      </div>
+      <div data-ref="storyRef" style="display: flex; flex-direction: column; gap: 24px;">
+        <div class="reveal js-in-story"><h2 class="kb-section-title kb-section-title--sm kb-section-title--left"><span class="kb-section-title__label">Our Story</span><span class="kb-section-title__rule" aria-hidden="true"></span></h2></div>
+        <div class="reveal reveal-2 js-in-story"><div class="kb-headline kb-headline--display kb-headline--left is-en kb-pre"><h2 class="kb-headline__title">Born in Bali.
+Created for <em>Malaysia</em>.</h2></div></div>
+        <div class="reveal reveal-3 js-in-story" style="display: flex; flex-direction: column; gap: 16px; margin-top: 16px;">
+          <p style="margin: 0; font-size: 15px; line-height: 1.8; letter-spacing: 0.04em;">Inspired by Bali's timeless wellness traditions, natural beauty and warm hospitality, KIN BALI brings the art of Balinese relaxation into modern Malaysia.</p>
+          <p style="margin: 0; font-size: 15px; line-height: 1.8; letter-spacing: 0.04em;">More than a massage, it is a moment to slow down, reconnect with yourself and restore your sense of balance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outlets: horizontal rail -->
+  <section id="outlets" style="padding: 104px 0;">
+    <div class="site-wrap" style="display: flex; flex-direction: column; gap: 48px;">
+      <div class="reveal js-in-outlet" data-ref="outletRef" style="display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+        <h2 class="kb-section-title kb-section-title--lg kb-section-title--left"><span class="kb-section-title__label">Our Outlets</span><span class="kb-section-title__rule" aria-hidden="true"></span></h2>
+      </div>
+      <div class="outlet-grid" data-ref="outletRail">
+        <div class="rail-item" style="display: flex; flex-direction: column; gap: 24px;">
+          <article class="kb-outlet"><h3 class="kb-outlet__name">Kin Bali Nusa Sentral</h3><p class="kb-outlet__area"><span>Taman Nusa Sentral, Iskandar Puteri</span></p><dl class="kb-outlet__hours"><div class="kb-outlet__row"><dt>Mon – Thu</dt><dd>10:00am – 1:00am</dd></div><div class="kb-outlet__row"><dt>Fri – Sun</dt><dd>10:00am – 3:00am</dd></div></dl><div class="kb-outlet__actions"><a class="kb-btn kb-btn--primary kb-btn--sm" href="https://wa.me/60127586655" target="_blank" rel="noopener">Book Now</a><a class="kb-btn kb-btn--link kb-btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=Kin%20Bali%20Nusa%20Sentral%20Johor" target="_blank" rel="noopener">Google Maps</a><a class="kb-btn kb-btn--link kb-btn--sm" href="https://waze.com/ul?q=Kin%20Bali%20Nusa%20Sentral%20Johor" target="_blank" rel="noopener">Waze</a></div></article>
+        </div>
+        <div class="rail-item" style="display: flex; flex-direction: column; gap: 24px;">
+          <article class="kb-outlet"><h3 class="kb-outlet__name">Kin Bali Eco Botanic 2</h3><p class="kb-outlet__area"><span>Eco Botanic, Iskandar Puteri</span></p><dl class="kb-outlet__hours"><div class="kb-outlet__row"><dt>Mon – Thu</dt><dd>10:00am – 1:00am</dd></div><div class="kb-outlet__row"><dt>Fri – Sun</dt><dd>10:00am – 3:00am</dd></div></dl><div class="kb-outlet__actions"><a class="kb-btn kb-btn--primary kb-btn--sm" href="https://wa.me/60182286655" target="_blank" rel="noopener">Book Now</a><a class="kb-btn kb-btn--link kb-btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=Kin%20Bali%20Eco%20Botanic%202%20Johor" target="_blank" rel="noopener">Google Maps</a><a class="kb-btn kb-btn--link kb-btn--sm" href="https://waze.com/ul?q=Kin%20Bali%20Eco%20Botanic%202%20Johor" target="_blank" rel="noopener">Waze</a></div></article>
+        </div>
+        <div class="rail-item" style="display: flex; flex-direction: column; gap: 24px;">
+          <article class="kb-outlet"><h3 class="kb-outlet__name">Kin Bali Forest City</h3><p class="kb-outlet__area"><span>Forest City, Gelang Patah</span></p><dl class="kb-outlet__hours"><div class="kb-outlet__row"><dt>Daily</dt><dd>12:00pm – 12:00am</dd></div></dl><div class="kb-outlet__actions"><a class="kb-btn kb-btn--primary kb-btn--sm" href="https://wa.me/60128478080" target="_blank" rel="noopener">Book Now</a><a class="kb-btn kb-btn--link kb-btn--sm" href="https://www.google.com/maps/search/?api=1&amp;query=Kin%20Bali%20Forest%20City%20Johor" target="_blank" rel="noopener">Google Maps</a><a class="kb-btn kb-btn--link kb-btn--sm" href="https://waze.com/ul?q=Kin%20Bali%20Forest%20City%20Johor" target="_blank" rel="noopener">Waze</a></div></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Membership: centre stage — headline on top, the app rising from the section floor, benefits either side -->
+  <section id="membership" class="kb-night" style="position: relative; padding: 60px 0 0; overflow: hidden;">
+    <div aria-hidden="true" style="position: absolute; left: 50%; bottom: -200px; width: 760px; height: 560px; margin-left: -380px; border-radius: 50%; background: var(--light-glow); opacity: 0.22; filter: blur(110px); transform: var(--glowShift, none); will-change: transform; pointer-events: none;"></div>
+    <div class="site-wrap" data-ref="memberRef" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 40px;">
+      <div class="reveal js-in-member" style="max-width: 760px;"><div class="kb-headline kb-headline--display kb-headline--center is-en"><h2 class="kb-headline__title">A little <em>more</em>, every time.</h2><p class="kb-headline__subtitle">Exclusive privileges, birthday treats and rewards from our partners.</p></div></div>
+      <div class="member-stage reveal reveal-2 js-in-member">
+        <div class="ms-side ms-left">
+          <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+            <span style="font-size: 12px; letter-spacing: 0.24em; color: var(--ink-soft);">01</span>
+            <h3 style="margin: 0; font-family: var(--font-en-serif); font-size: 28px; line-height: 1.2; font-weight: 400; color: var(--ink-brand);">Member Privileges</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 22px;">Exclusive perks. Special birthday treats.</p>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+            <span style="font-size: 12px; letter-spacing: 0.24em; color: var(--ink-soft);">02</span>
+            <h3 style="margin: 0; font-family: var(--font-en-serif); font-size: 28px; line-height: 1.2; font-weight: 400; color: var(--ink-brand);">Partner Rewards</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 22px;">More perks from our partners.</p>
+          </div>
+        </div>
+        <div class="app-phone" style="width: 340px; height: 500px;"><img src="assets/img/app-screen.jpg" alt="Kin Bali Massage app home screen showing treatment shortcuts and special packages"></div>
+        <div class="ms-side ms-right">
+          <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;">
+            <span style="font-size: 12px; letter-spacing: 0.24em; color: var(--ink-soft);">03</span>
+            <h3 style="margin: 0; font-family: var(--font-en-serif); font-size: 28px; line-height: 1.2; font-weight: 400; color: var(--ink-brand);">All in One Place</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 22px;">Your membership, credits and rewards in one app.</p>
+          </div>
+          <div class="ms-badges">
+            <a class="store-badge" href="#membership" aria-label="Download on the App Store"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg><span><small>Download on the</small><b>App Store</b></span></a>
+            <a class="store-badge" href="#membership" aria-label="Get it on Google Play"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg><span><small>Get it on</small><b>Google Play</b></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: var(--earth-cocoa); color: var(--light-rice); padding: 64px 0 40px;">
+    <div class="site-wrap" style="display: flex; flex-direction: column; gap: 40px;">
+      <div class="site-foot">
+        <div style="display: flex; flex-direction: column; gap: 24px;">
+          <img src="assets/img/logo.png" alt="Kin Bali Massage" style="height: 48px; width: auto; align-self: flex-start;">
+          <p style="margin: 0; font-size: 12px; line-height: 16px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--light-butter);">Take a break. Breathe in Bali.</p>
+        </div>
+        <nav aria-label="Explore" style="display: flex; flex-direction: column; gap: 16px; font-size: 14px; letter-spacing: 0.04em;">
+          <span style="font-size: 12px; letter-spacing: 0.24em; color: var(--light-butter);">EXPLORE</span>
+          <a href="treatments.html" style="color: var(--light-rice); text-decoration: none;">Signature Treatments</a>
+          <a href="#outlets" style="color: var(--light-rice); text-decoration: none;">Our Outlets</a>
+          <a href="#membership" style="color: var(--light-rice); text-decoration: none;">Membership</a>
+        </nav>
+        <nav aria-label="Connect" style="display: flex; flex-direction: column; gap: 16px; font-size: 14px; letter-spacing: 0.04em;">
+          <span style="font-size: 12px; letter-spacing: 0.24em; color: var(--light-butter);">CONNECT</span>
+          <div class="wa-wrap "><button type="button" class="wa-trigger" aria-expanded="false" aria-haspopup="true" data-onclick="toggleWa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg>WhatsApp</button><div class="wa-pop" role="menu" aria-label="Choose an outlet"><div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Forest City</span><span class="wa-area">Forest City, Gelang Patah</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60128478080" target="_blank" rel="noopener">Book</a></div><div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Eco Botanic 2</span><span class="wa-area">Eco Botanic, Iskandar Puteri</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60182286655" target="_blank" rel="noopener">Book</a></div><div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Nusa Sentral</span><span class="wa-area">Taman Nusa Sentral, Iskandar Puteri</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60127586655" target="_blank" rel="noopener">Book</a></div></div></div>
+          <a href="https://www.instagram.com/kinbalimassage/" target="_blank" rel="noopener" style="color: var(--light-rice); text-decoration: none;">Instagram</a>
+          <a href="https://www.facebook.com/kinbalimassage/" target="_blank" rel="noopener" style="color: var(--light-rice); text-decoration: none;">Facebook</a>
+        </nav>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid var(--earth-walnut); font-size: 12px; letter-spacing: 0.08em; color: var(--light-butter);">
+        <span>© 2026 KIN BALI MASSAGE. All rights reserved.</span>
+        <span>Terms of Use · Privacy Policy</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</div>
+<div class="v-m">
+<div class="phone" data-ref="phoneRef" style="background: var(--surface); color: var(--ink); font-family: var(--font-en-sans), var(--font-cn-sans);">
+
+  <!-- Mobile menu: full-screen panel that fades and slides in over the page -->
+  <div class="m-menu kb-night " role="dialog" aria-modal="true" aria-label="Menu">
+    <div style="display: flex; align-items: center; justify-content: flex-end; height: 64px; padding: 0 16px;">
+      <button type="button" aria-label="Close menu" data-onclick="closeMenu" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: none; border: 0; padding: 0; color: var(--ink); cursor: pointer;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+    </div>
+    <div class="m-menu__body">
+      <div class="m-menu__book"><a class="kb-btn kb-btn--primary kb-btn--md" href="#m-outlets">Book Now</a><a class="kb-btn kb-btn--secondary kb-btn--md" href="https://app.kinbali.com.my/login">Login</a></div>
+      <nav class="m-menu__links" aria-label="Main">
+        <a href="treatments.html" data-onclick="closeMenu"><span>01</span>Treatments</a>
+        <a href="#m-story" data-onclick="closeMenu"><span>02</span>Our Story</a>
+        <a href="#m-outlets" data-onclick="closeMenu"><span>03</span>Outlets</a>
+        <a href="#m-membership" data-onclick="closeMenu"><span>04</span>App</a>
+        <a href="#m-contact" data-onclick="closeMenu"><span>05</span>Contact Us</a>
+      </nav>
+    </div>
+    <div style="padding: 0 24px;">
+      <img src="assets/img/logo.png" alt="Kin Bali Massage" style="height: 28px; width: auto; display: block; filter: brightness(0) invert(1);">
+    </div>
+  </div>
+  <header class="m-header is-clear" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 64px; padding: 0 16px; box-sizing: border-box;">
+    <a href="#m-top" aria-label="Kin Bali Massage home" style="display: flex;"><img class="site-logo" src="assets/img/logo.png" alt="Kin Bali Massage" style="height: 24px; width: auto; display: block;"></a>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <a href="#m-top" lang="zh-Hans" aria-label="切换到中文版 (Switch to Chinese)" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; font-size: 13px; letter-spacing: 0.06em; color: var(--ink); text-decoration: none;">中文</a>
+      <button type="button" class="snd-btn" aria-label="Mute background music" aria-pressed="true" data-onclick="toggleSound">
+        <svg class="ico-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"></path><path d="M15.5 9a4 4 0 0 1 0 6"></path><path d="M18 6.5a7.5 7.5 0 0 1 0 11"></path></svg>
+        <svg class="ico-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"></path><path d="M16 9.5l5 5M21 9.5l-5 5"></path></svg>
+      </button>
+      <button type="button" aria-label="Open menu" aria-expanded="false" data-onclick="openMenu" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: none; border: 0; padding: 0; color: var(--ink); cursor: pointer;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"></path></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero: the 16:9 video cropped to fill the phone, copy and button centred over it -->
+  <section id="m-top" class="px-frame" style="height: 640px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 16px; box-sizing: border-box;">
+    <div class="px-layer" style="transform: var(--heroPhotoShift, none);">
+      <video data-src="assets/media/hero.mp4" muted loop playsinline preload="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+    </div>
+    <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(42, 31, 23, 0.45); pointer-events: none;"></div>
+    <div class="kb-night" style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; background: transparent; transform: var(--heroTextShift, none); opacity: var(--heroTextFade, 1);">
+      <div class="kb-headline kb-headline--display kb-headline--center is-en kb-pre"><h1 class="kb-headline__title">Escape the noise.
+Embrace <em>serenity</em>.</h1><p class="kb-headline__subtitle">A moment of calm, inspired by the art of Balinese massage.</p></div>
+      <a class="kb-btn kb-btn--primary kb-btn--md" href="#m-outlets">Book Now</a>
+    </div>
+    <a href="#m-treatments" class="scroll-cue" style="position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); text-decoration: none; opacity: var(--heroTextFade, 1);">SCROLL<i></i></a>
+  </section>
+
+  <!-- Treatments: coverflow, swipe or tap the peeking cards, auto-advances every 3.5s -->
+  <section id="m-treatments" style="padding: 64px 16px 48px; display: flex; flex-direction: column; gap: 24px; overflow: hidden;">
+    <div class="reveal js-in-treat" data-ref="treatRef"><h2 class="kb-section-title kb-section-title--sm kb-section-title--center kb-norule kb-center"><span class="kb-section-title__rule" aria-hidden="true"></span><span class="kb-section-title__label">Signature Treatments</span><span class="kb-section-title__rule" aria-hidden="true"></span></h2></div>
+    <div class="cf cf--v" data-ontouchstart="cfTouchStart" data-ontouchend="cfTouchEnd">
+      <div class="cf-glow" aria-hidden="true"></div>
+      
+        <div class="cf-item p0" aria-hidden="false">
+          <div class="cf-photo kb-tone--glow">
+            <div class="cf-photo-inner" style="padding: 16px;"><img class="cf-img" src="assets/img/treatment-01-foot.jpg" alt="Therapist pouring warm water over feet in a copper basin" style="object-position: center 60%;"></div>
+          </div>
+          <div class="cf-copy">
+            <span class="cf-num">01 / 03</span>
+            <span class="kb-tag kb-tag--outline">Feet</span>
+            <h3 class="cf-name">Balinese Foot Reflexology</h3>
+            <p class="cf-desc">A restorative foot ritual inspired by traditional Balinese techniques.</p>
+            <div class="cf-foot">
+              <span class="cf-price">From RM 98</span>
+              <a class="kb-btn kb-btn--primary kb-btn--sm" href="#m-outlets">Book Now</a>
+            </div>
+          </div>
+          <button type="button" class="cf-hit" aria-label="Show Balinese Foot Reflexology" tabindex="-1" data-onclick="t.go"></button>
+        </div>
+      
+        <div class="cf-item p1" aria-hidden="false">
+          <div class="cf-photo kb-tone--ochre">
+            <div class="cf-photo-inner" style="padding: 16px;"><img class="cf-img" src="assets/img/treatment-02-shoulder.jpg" alt="Therapist massaging a relaxed guest's neck and shoulders" style="object-position: center 40%;"></div>
+          </div>
+          <div class="cf-copy">
+            <span class="cf-num">02 / 03</span>
+            <span class="kb-tag kb-tag--outline">Feet · Shoulders</span>
+            <h3 class="cf-name">Balinese Foot & Shoulder Relaxation</h3>
+            <p class="cf-desc">The perfect balance of soothing foot massage and tension-relieving shoulder care.</p>
+            <div class="cf-foot">
+              <span class="cf-price">From RM 118</span>
+              <a class="kb-btn kb-btn--primary kb-btn--sm" href="#m-outlets">Book Now</a>
+            </div>
+          </div>
+          <button type="button" class="cf-hit" aria-label="Show Balinese Foot & Shoulder Relaxation" tabindex="0" data-onclick="t.go"></button>
+        </div>
+      
+        <div class="cf-item p2" aria-hidden="true">
+          <div class="cf-photo kb-tone--walnut">
+            <div class="cf-photo-inner" style="padding: 16px;"><img class="cf-img" src="assets/img/treatment-03-oil.jpg" alt="Therapist pouring warm oil into her palm above a guest's back" style="object-position: center 55%;"></div>
+          </div>
+          <div class="cf-copy">
+            <span class="cf-num">03 / 03</span>
+            <span class="kb-tag kb-tag--outline">Full body</span>
+            <h3 class="cf-name">Balinese Oil Full Body Relaxation</h3>
+            <p class="cf-desc">Warm oils and flowing massage techniques for a deeply relaxing experience.</p>
+            <div class="cf-foot">
+              <span class="cf-price">From RM 118</span>
+              <a class="kb-btn kb-btn--primary kb-btn--sm" href="#m-outlets">Book Now</a>
+            </div>
+          </div>
+          <button type="button" class="cf-hit" aria-label="Show Balinese Oil Full Body Relaxation" tabindex="-1" data-onclick="t.go"></button>
+        </div>
+      
+        <div class="cf-item p3" aria-hidden="true">
+          <div class="cf-photo kb-tone--glow">
+            <div class="cf-photo-inner" style="padding: 16px;"><img class="cf-img" src="assets/img/treatment-01-foot.jpg" alt="Therapist pouring warm water over feet in a copper basin" style="object-position: center 60%;"></div>
+          </div>
+          <div class="cf-copy">
+            <span class="cf-num">01 / 03</span>
+            <span class="kb-tag kb-tag--outline">Feet</span>
+            <h3 class="cf-name">Balinese Foot Reflexology</h3>
+            <p class="cf-desc">A restorative foot ritual inspired by traditional Balinese techniques.</p>
+            <div class="cf-foot">
+              <span class="cf-price">From RM 98</span>
+              <a class="kb-btn kb-btn--primary kb-btn--sm" href="#m-outlets">Book Now</a>
+            </div>
+          </div>
+          <button type="button" class="cf-hit" aria-label="Show Balinese Foot Reflexology" tabindex="-1" data-onclick="t.go"></button>
+        </div>
+      
+        <div class="cf-item p4" aria-hidden="true">
+          <div class="cf-photo kb-tone--ochre">
+            <div class="cf-photo-inner" style="padding: 16px;"><img class="cf-img" src="assets/img/treatment-02-shoulder.jpg" alt="Therapist massaging a relaxed guest's neck and shoulders" style="object-position: center 40%;"></div>
+          </div>
+          <div class="cf-copy">
+            <span class="cf-num">02 / 03</span>
+            <span class="kb-tag kb-tag--outline">Feet · Shoulders</span>
+            <h3 class="cf-name">Balinese Foot & Shoulder Relaxation</h3>
+            <p class="cf-desc">The perfect balance of soothing foot massage and tension-relieving shoulder care.</p>
+            <div class="cf-foot">
+              <span class="cf-price">From RM 118</span>
+              <a class="kb-btn kb-btn--primary kb-btn--sm" href="#m-outlets">Book Now</a>
+            </div>
+          </div>
+          <button type="button" class="cf-hit" aria-label="Show Balinese Foot & Shoulder Relaxation" tabindex="-1" data-onclick="t.go"></button>
+        </div>
+      
+        <div class="cf-item m4" aria-hidden="true">
+          <div class="cf-photo kb-tone--walnut">
+            <div class="cf-photo-inner" style="padding: 16px;"><img class="cf-img" src="assets/img/treatment-03-oil.jpg" alt="Therapist pouring warm oil into her palm above a guest's back" style="object-position: center 55%;"></div>
+          </div>
+          <div class="cf-copy">
+            <span class="cf-num">03 / 03</span>
+            <span class="kb-tag kb-tag--outline">Full body</span>
+            <h3 class="cf-name">Balinese Oil Full Body Relaxation</h3>
+            <p class="cf-desc">Warm oils and flowing massage techniques for a deeply relaxing experience.</p>
+            <div class="cf-foot">
+              <span class="cf-price">From RM 118</span>
+              <a class="kb-btn kb-btn--primary kb-btn--sm" href="#m-outlets">Book Now</a>
+            </div>
+          </div>
+          <button type="button" class="cf-hit" aria-label="Show Balinese Oil Full Body Relaxation" tabindex="-1" data-onclick="t.go"></button>
+        </div>
+      
+        <div class="cf-item m3" aria-hidden="true">
+          <div class="cf-photo kb-tone--glow">
+            <div class="cf-photo-inner" style="padding: 16px;"><img class="cf-img" src="assets/img/treatment-01-foot.jpg" alt="Therapist pouring warm water over feet in a copper basin" style="object-position: center 60%;"></div>
+          </div>
+          <div class="cf-copy">
+            <span class="cf-num">01 / 03</span>
+            <span class="kb-tag kb-tag--outline">Feet</span>
+            <h3 class="cf-name">Balinese Foot Reflexology</h3>
+            <p class="cf-desc">A restorative foot ritual inspired by traditional Balinese techniques.</p>
+            <div class="cf-foot">
+              <span class="cf-price">From RM 98</span>
+              <a class="kb-btn kb-btn--primary kb-btn--sm" href="#m-outlets">Book Now</a>
+            </div>
+          </div>
+          <button type="button" class="cf-hit" aria-label="Show Balinese Foot Reflexology" tabindex="-1" data-onclick="t.go"></button>
+        </div>
+      
+        <div class="cf-item m2" aria-hidden="true">
+          <div class="cf-photo kb-tone--ochre">
+            <div class="cf-photo-inner" style="padding: 16px;"><img class="cf-img" src="assets/img/treatment-02-shoulder.jpg" alt="Therapist massaging a relaxed guest's neck and shoulders" style="object-position: center 40%;"></div>
+          </div>
+          <div class="cf-copy">
+            <span class="cf-num">02 / 03</span>
+            <span class="kb-tag kb-tag--outline">Feet · Shoulders</span>
+            <h3 class="cf-name">Balinese Foot & Shoulder Relaxation</h3>
+            <p class="cf-desc">The perfect balance of soothing foot massage and tension-relieving shoulder care.</p>
+            <div class="cf-foot">
+              <span class="cf-price">From RM 118</span>
+              <a class="kb-btn kb-btn--primary kb-btn--sm" href="#m-outlets">Book Now</a>
+            </div>
+          </div>
+          <button type="button" class="cf-hit" aria-label="Show Balinese Foot & Shoulder Relaxation" tabindex="-1" data-onclick="t.go"></button>
+        </div>
+      
+        <div class="cf-item m1" aria-hidden="false">
+          <div class="cf-photo kb-tone--walnut">
+            <div class="cf-photo-inner" style="padding: 16px;"><img class="cf-img" src="assets/img/treatment-03-oil.jpg" alt="Therapist pouring warm oil into her palm above a guest's back" style="object-position: center 55%;"></div>
+          </div>
+          <div class="cf-copy">
+            <span class="cf-num">03 / 03</span>
+            <span class="kb-tag kb-tag--outline">Full body</span>
+            <h3 class="cf-name">Balinese Oil Full Body Relaxation</h3>
+            <p class="cf-desc">Warm oils and flowing massage techniques for a deeply relaxing experience.</p>
+            <div class="cf-foot">
+              <span class="cf-price">From RM 118</span>
+              <a class="kb-btn kb-btn--primary kb-btn--sm" href="#m-outlets">Book Now</a>
+            </div>
+          </div>
+          <button type="button" class="cf-hit" aria-label="Show Balinese Oil Full Body Relaxation" tabindex="0" data-onclick="t.go"></button>
+        </div>
+      
+    </div>
+    <div class="acc-progress" role="tablist" aria-label="Treatments" style="width: 60%; max-width: 60%; margin: 0 auto;">
+      
+        <button type="button" role="tab" aria-selected="true" aria-label="Balinese Foot Reflexology" class="acc-seg is-on" data-onclick="t.pick" style="padding: 12px 0;">
+          <span class="acc-track"><span class="acc-fill run-b"></span></span>
+        </button>
+      
+        <button type="button" role="tab" aria-selected="false" aria-label="Balinese Foot & Shoulder Relaxation" class="acc-seg " data-onclick="t.pick" style="padding: 12px 0;">
+          <span class="acc-track"><span class="acc-fill "></span></span>
+        </button>
+      
+        <button type="button" role="tab" aria-selected="false" aria-label="Balinese Oil Full Body Relaxation" class="acc-seg " data-onclick="t.pick" style="padding: 12px 0;">
+          <span class="acc-track"><span class="acc-fill "></span></span>
+        </button>
+      
+    </div>
+    <div style="display: flex; justify-content: center;"><a class="kb-btn kb-btn--link kb-btn--md" href="treatments.html">More</a></div>
+  </section>
+
+  <!-- Story -->
+  <section id="m-story" class="kb-night" style="position: relative; background: var(--leaf-jungle); padding: 64px 16px; display: flex; flex-direction: column; gap: 24px; overflow: hidden;">
+    <div class="px-layer story-bg" aria-hidden="true" style="transform: var(--storyBgShift, none);"></div>
+    <div aria-hidden="true" style="position: absolute; inset: 0; background: rgba(24, 28, 16, 0.45); pointer-events: none;"></div>
+    <div data-ref="storyRef" class="reveal js-in-story"><h2 class="kb-section-title kb-section-title--sm kb-section-title--left kb-norule"><span class="kb-section-title__label">Our Story</span><span class="kb-section-title__rule" aria-hidden="true"></span></h2></div>
+    <div class="reveal reveal-2 js-in-story"><div class="kb-headline kb-headline--title kb-headline--left is-en kb-pre kb-story-m"><h2 class="kb-headline__title">Born in Bali.
+Created for <em>Malaysia</em>.</h2></div></div>
+    <div class="px-frame" role="img" aria-label="Kin Bali Massage outlet interior" style="height: 360px; margin: 0 -16px;">
+      <div class="px-layer kb-tone--clay" style="top: 0; height: 112%; transform: var(--storyPhotoShift, none);"><img src="assets/img/outlet-interior.jpg" alt="Kin Bali Massage outlet reception with warm lighting and carved wooden stools" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: right top;"></div>
+    </div>
+    <div class="reveal reveal-3 js-in-story" style="display: flex; flex-direction: column; gap: 16px;">
+      <p style="margin: 0; font-size: 15px; line-height: 1.8; letter-spacing: 0.02em;">Inspired by Bali's timeless wellness traditions, natural beauty and warm hospitality, KIN BALI brings the art of Balinese relaxation into modern Malaysia.</p>
+      <p style="margin: 0; font-size: 15px; line-height: 1.8; letter-spacing: 0.02em;">More than a massage, it is a moment to slow down, reconnect with yourself and restore your sense of balance.</p>
+    </div>
+  </section>
+
+  <!-- Outlets: swipe rail -->
+  <!-- Outlets on a phone: a short list — name, area and today's hours at a glance, Book always in reach; tap a row for full hours and directions -->
+  <section id="m-outlets" style="padding: 64px 0 48px; display: flex; flex-direction: column; gap: 24px;">
+    <div class="reveal js-in-outlet" data-ref="outletRef" style="padding: 0 16px;"><h2 class="kb-section-title kb-section-title--sm kb-section-title--center kb-norule kb-center"><span class="kb-section-title__rule" aria-hidden="true"></span><span class="kb-section-title__label">Our Outlets</span><span class="kb-section-title__rule" aria-hidden="true"></span></h2></div>
+    <div class="mo-list">
+      
+        <div class="mo-row ">
+          <div class="mo-head">
+            <button type="button" class="mo-toggle" aria-expanded="false" data-onclick="o.toggle">
+              <span class="mo-name">Kin Bali Nusa Sentral</span>
+              <span class="mo-meta">Taman Nusa Sentral, Iskandar Puteri</span>
+              <span class="mo-short">10am – 1am · Fri–Sun till 3am</span>
+              <svg class="mo-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+            <a class="kb-btn kb-btn--primary kb-btn--sm" href="https://wa.me/60127586655" target="_blank" rel="noopener">Book</a>
+          </div>
+          <div class="mo-detail">
+            <dl class="mo-hours">
+              
+                <div class="mo-hrow"><dt>Mon – Thu</dt><dd>10:00am – 1:00am</dd></div>
+              
+                <div class="mo-hrow"><dt>Fri – Sun</dt><dd>10:00am – 3:00am</dd></div>
+              
+            </dl>
+            <div class="mo-links">
+              <a class="mo-link mo-link--map" href="https://www.google.com/maps/search/?api=1&amp;query=Kin%20Bali%20Nusa%20Sentral%20Johor" target="_blank" rel="noopener">Google Maps</a>
+              <a class="mo-link mo-link--waze" href="https://waze.com/ul?q=Kin%20Bali%20Nusa%20Sentral%20Johor" target="_blank" rel="noopener">Waze</a>
+            </div>
+          </div>
+        </div>
+      
+        <div class="mo-row ">
+          <div class="mo-head">
+            <button type="button" class="mo-toggle" aria-expanded="false" data-onclick="o.toggle">
+              <span class="mo-name">Kin Bali Eco Botanic 2</span>
+              <span class="mo-meta">Eco Botanic, Iskandar Puteri</span>
+              <span class="mo-short">10am – 1am · Fri–Sun till 3am</span>
+              <svg class="mo-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+            <a class="kb-btn kb-btn--primary kb-btn--sm" href="https://wa.me/60182286655" target="_blank" rel="noopener">Book</a>
+          </div>
+          <div class="mo-detail">
+            <dl class="mo-hours">
+              
+                <div class="mo-hrow"><dt>Mon – Thu</dt><dd>10:00am – 1:00am</dd></div>
+              
+                <div class="mo-hrow"><dt>Fri – Sun</dt><dd>10:00am – 3:00am</dd></div>
+              
+            </dl>
+            <div class="mo-links">
+              <a class="mo-link mo-link--map" href="https://www.google.com/maps/search/?api=1&amp;query=Kin%20Bali%20Eco%20Botanic%202%20Johor" target="_blank" rel="noopener">Google Maps</a>
+              <a class="mo-link mo-link--waze" href="https://waze.com/ul?q=Kin%20Bali%20Eco%20Botanic%202%20Johor" target="_blank" rel="noopener">Waze</a>
+            </div>
+          </div>
+        </div>
+      
+        <div class="mo-row ">
+          <div class="mo-head">
+            <button type="button" class="mo-toggle" aria-expanded="false" data-onclick="o.toggle">
+              <span class="mo-name">Kin Bali Forest City</span>
+              <span class="mo-meta">Forest City, Gelang Patah</span>
+              <span class="mo-short">Daily 12pm – 12am</span>
+              <svg class="mo-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+            </button>
+            <a class="kb-btn kb-btn--primary kb-btn--sm" href="https://wa.me/60128478080" target="_blank" rel="noopener">Book</a>
+          </div>
+          <div class="mo-detail">
+            <dl class="mo-hours">
+              
+                <div class="mo-hrow"><dt>Daily</dt><dd>12:00pm – 12:00am</dd></div>
+              
+            </dl>
+            <div class="mo-links">
+              <a class="mo-link mo-link--map" href="https://www.google.com/maps/search/?api=1&amp;query=Kin%20Bali%20Forest%20City%20Johor" target="_blank" rel="noopener">Google Maps</a>
+              <a class="mo-link mo-link--waze" href="https://waze.com/ul?q=Kin%20Bali%20Forest%20City%20Johor" target="_blank" rel="noopener">Waze</a>
+            </div>
+          </div>
+        </div>
+      
+    </div>
+  </section>
+
+  <!-- Membership: headline, then the app mockup; its lower part fades into the section and the 2x2 cards sit over it -->
+  <section id="m-membership" class="kb-night" style="position: relative; padding: 64px 16px 56px; display: flex; flex-direction: column; align-items: center; gap: 32px; overflow: hidden;">
+    <div aria-hidden="true" style="position: absolute; left: 50%; top: 140px; width: 380px; height: 380px; margin-left: -190px; border-radius: 50%; background: var(--light-glow); opacity: 0.18; filter: blur(80px); transform: var(--glowShift, none); pointer-events: none;"></div>
+    <div data-ref="memberRef" class="reveal js-in-member" style="position: relative; text-align: center;"><div class="kb-headline kb-headline--title kb-headline--center is-en"><h2 class="kb-headline__title">A little <em>more</em>, every time.</h2><p class="kb-headline__subtitle">Exclusive privileges, birthday treats and rewards from our partners.</p></div></div>
+    <div class="reveal reveal-2 js-in-member" style="position: relative; align-self: stretch; display: flex; flex-direction: column; align-items: center;">
+      <div style="position: relative; width: 260px; height: 440px;">
+        <div class="app-phone" style="width: 260px; height: 440px;"><img src="assets/img/app-screen.jpg" alt="Kin Bali Massage app home screen showing treatment shortcuts and special packages"></div>
+        <div aria-hidden="true" style="position: absolute; left: -80px; right: -80px; bottom: -160px; height: calc(40% + 160px); background: linear-gradient(to bottom, rgba(42, 31, 23, 0) 0%, rgba(42, 31, 23, 0.92) 22%, #2a1f17 29%, #2a1f17 100%); pointer-events: none;"></div>
+      </div>
+      <div class="m-perks" style="margin-top: -84px;">
+        <div class="m-perk">
+          <span style="font-size: 11px; letter-spacing: 0.24em; color: var(--ink-soft);">01</span>
+          <h3 style="margin: 0; font-family: var(--font-en-serif); font-size: 19px; line-height: 1.2; font-weight: 400; color: var(--ink-brand);">Member Privileges</h3>
+          <p style="margin: 0; font-size: 13px; line-height: 19px;">Exclusive perks. Special birthday treats.</p>
+        </div>
+        <div class="m-perk">
+          <span style="font-size: 11px; letter-spacing: 0.24em; color: var(--ink-soft);">02</span>
+          <h3 style="margin: 0; font-family: var(--font-en-serif); font-size: 19px; line-height: 1.2; font-weight: 400; color: var(--ink-brand);">Partner Rewards</h3>
+          <p style="margin: 0; font-size: 13px; line-height: 19px;">More perks from our partners.</p>
+        </div>
+        <div class="m-perk">
+          <span style="font-size: 11px; letter-spacing: 0.24em; color: var(--ink-soft);">03</span>
+          <h3 style="margin: 0; font-family: var(--font-en-serif); font-size: 19px; line-height: 1.2; font-weight: 400; color: var(--ink-brand);">All in One Place</h3>
+          <p style="margin: 0; font-size: 13px; line-height: 19px;">Your membership, credits and rewards in one app.</p>
+        </div>
+        <div class="m-perk m-perk--app">
+          <span style="font-size: 11px; letter-spacing: 0.24em; color: var(--ink-soft);">GET THE APP</span>
+          <a class="store-badge store-badge--sm" href="#m-membership" aria-label="Download on the App Store"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg><span><small>Download on the</small><b>App Store</b></span></a>
+          <a class="store-badge store-badge--sm" href="#m-membership" aria-label="Get it on Google Play"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"></rect><path d="M10.5 18.5h3"></path></svg><span><small>Get it on</small><b>Google Play</b></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="m-contact" style="background: var(--earth-cocoa); color: var(--light-rice); padding: 48px 16px 32px; display: flex; flex-direction: column; gap: 28px;">
+    <img src="assets/img/logo.png" alt="Kin Bali Massage" style="height: 40px; width: auto; align-self: flex-start;">
+    <div style="position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
+      <nav aria-label="Explore" style="display: flex; flex-direction: column; gap: 10px; font-size: 16px;">
+        <span style="margin-bottom: 4px; font-size: 10px; letter-spacing: 0.28em; color: var(--light-glow);">EXPLORE</span>
+        <a href="treatments.html" style="color: var(--light-rice); text-decoration: none;">Treatments</a>
+        <a href="#m-outlets" style="color: var(--light-rice); text-decoration: none;">Outlets</a>
+        <a href="#m-membership" style="color: var(--light-rice); text-decoration: none;">Membership</a>
+      </nav>
+      <nav aria-label="Connect" style="display: flex; flex-direction: column; gap: 10px; font-size: 16px;">
+        <span style="margin-bottom: 4px; font-size: 10px; letter-spacing: 0.28em; color: var(--light-glow);">CONNECT</span>
+        <div class="wa-wrap wa-wrap--m "><button type="button" class="wa-trigger" aria-expanded="false" aria-haspopup="true" data-onclick="toggleWa"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg>WhatsApp</button><div class="wa-pop wa-pop--m" role="menu" aria-label="Choose an outlet"><div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Forest City</span><span class="wa-area">Forest City, Gelang Patah</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60128478080" target="_blank" rel="noopener">Book</a></div><div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Eco Botanic 2</span><span class="wa-area">Eco Botanic, Iskandar Puteri</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60182286655" target="_blank" rel="noopener">Book</a></div><div class="wa-opt"><span class="wa-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.6 20.4l1.2-4A8.4 8.4 0 1 1 8 19.3z"></path><path d="M9.2 8.6c.2-.5.6-.6.9-.6h.4c.2 0 .4.1.5.4l.6 1.5c.1.2 0 .5-.2.7l-.5.5c.5 1 1.3 1.8 2.3 2.3l.5-.5c.2-.2.5-.3.7-.2l1.5.6c.3.1.4.3.4.5v.4c0 .3-.1.7-.6.9-.6.3-1.7.4-3.3-.5a8 8 0 0 1-3-3c-.9-1.6-.8-2.7-.5-3.3z"></path></svg></span><span class="wa-txt"><span class="wa-name">Nusa Sentral</span><span class="wa-area">Taman Nusa Sentral, Iskandar Puteri</span></span><a class="kb-btn kb-btn--sm wa-book" href="https://wa.me/60127586655" target="_blank" rel="noopener">Book</a></div></div></div>
+        <a href="https://www.instagram.com/kinbalimassage/" target="_blank" rel="noopener" style="color: var(--light-rice); text-decoration: none;">Instagram</a>
+        <a href="https://www.facebook.com/kinbalimassage/" target="_blank" rel="noopener" style="color: var(--light-rice); text-decoration: none;">Facebook</a>
+      </nav>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px; padding-top: 20px; border-top: 1px solid var(--earth-walnut); font-size: 8.5px; letter-spacing: 0.08em; color: var(--light-butter);">
+      <span>Terms of Use · Privacy Policy</span>
+      <span>© 2026 KIN BALI MASSAGE. All rights reserved.</span>
+    </div>
+  </footer>
+
+</div>
+</div>
+</div>
+<div class="pg" id="pg-tr" data-title="Treatments — Kin Bali Massage">
 <div class="v-d">
 <div class="tr-root " style="width: 100%; background: var(--surface); color: var(--ink); font-family: var(--font-en-sans), var(--font-cn-sans);">
-  <audio class="tr-sfx" data-sfx="01" src="assets/media/sfx-01.mp4" preload="auto" aria-hidden="true"></audio>
-  <audio class="tr-sfx" data-sfx="02" src="assets/media/sfx-02.mp4" preload="auto" aria-hidden="true"></audio>
-  <audio class="tr-sfx" data-sfx="03" src="assets/media/sfx-03.mp4" preload="auto" aria-hidden="true"></audio>
-  <audio class="tr-sfx" data-sfx="04" src="assets/media/sfx-04.mp4" preload="auto" aria-hidden="true"></audio>
-  <audio class="tr-sfx" data-sfx="05" src="assets/media/sfx-05.mp4" preload="auto" aria-hidden="true"></audio>
-  <audio class="tr-sfx" data-sfx="06" src="assets/media/sfx-06.mp4" preload="auto" aria-hidden="true"></audio>
+  <audio class="tr-sfx" data-sfx="01" data-src="assets/media/sfx-01.mp4" preload="auto" aria-hidden="true"></audio>
+  <audio class="tr-sfx" data-sfx="02" data-src="assets/media/sfx-02.mp4" preload="auto" aria-hidden="true"></audio>
+  <audio class="tr-sfx" data-sfx="03" data-src="assets/media/sfx-03.mp4" preload="auto" aria-hidden="true"></audio>
+  <audio class="tr-sfx" data-sfx="04" data-src="assets/media/sfx-04.mp4" preload="auto" aria-hidden="true"></audio>
+  <audio class="tr-sfx" data-sfx="05" data-src="assets/media/sfx-05.mp4" preload="auto" aria-hidden="true"></audio>
+  <audio class="tr-sfx" data-sfx="06" data-src="assets/media/sfx-06.mp4" preload="auto" aria-hidden="true"></audio>
   <header class="site-header is-solid">
     <div class="site-wrap" style="display: flex; align-items: center; justify-content: space-between; gap: 24px;">
       <a href="index.html" aria-label="Kin Bali Massage home" style="display: flex; align-items: center;"><img class="site-logo" src="assets/img/logo.png" alt="Kin Bali Massage" style="height: 40px; width: auto; display: block;"></a>
       <nav class="site-nav-links" aria-label="Main" style="display: flex; align-items: center; gap: 40px; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase;">
-        <a class="nav-link" href="#top" aria-current="page">Treatments</a>
+        <a class="nav-link" href="#tr-top" aria-current="page">Treatments</a>
         <a class="nav-link" href="index.html">Outlets</a>
         <a class="nav-link" href="index.html">App</a>
       </nav>
       <div style="display: flex; align-items: center; gap: 24px;">
-        <a class="nav-link" href="#top" lang="zh-Hans" aria-label="切换到中文版 (Switch to Chinese)" style="font-size: 14px; letter-spacing: 0.08em;">中文</a>
+        <a class="nav-link" href="#tr-top" lang="zh-Hans" aria-label="切换到中文版 (Switch to Chinese)" style="font-size: 14px; letter-spacing: 0.08em;">中文</a>
         <button type="button" class="snd-btn" aria-label="Mute background music" aria-pressed="true" data-onclick="toggleSound">
           <svg class="ico-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"></path><path d="M15.5 9a4 4 0 0 1 0 6"></path><path d="M18 6.5a7.5 7.5 0 0 1 0 11"></path></svg>
           <svg class="ico-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"></path><path d="M16 9.5l5 5M21 9.5l-5 5"></path></svg>
@@ -55,7 +820,7 @@
   </header>
 
   <!-- Intro -->
-  <section id="top" class="tr-intro">
+  <section id="tr-top" class="tr-intro">
     <div class="site-wrap tr-intro__grid">
       <div>
         <p class="tr-crumb"><a href="index.html">Home</a><span aria-hidden="true">/</span><span>Treatments</span></p>
@@ -86,7 +851,7 @@ of <em>serenity</em>.</h1></div>
             <div class="tr-media kb-tone--glow">
               <img src="assets/img/treatment-01-foot.jpg" alt="Therapist pouring warm water over feet in a copper basin" style="object-position: center 60%;">
               
-              <video class="tr-vid" src="assets/media/hover-01.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
+              <video class="tr-vid" data-src="assets/media/hover-01.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
               <span class="tr-media__tag">Foot care</span>
             </div>
             <div class="tr-body">
@@ -104,7 +869,7 @@ of <em>serenity</em>.</h1></div>
             <div class="tr-media kb-tone--ochre">
               <img src="assets/img/treatment-02-shoulder.jpg" alt="Therapist massaging a relaxed guest's neck and shoulders" style="object-position: center 40%;">
               
-              <video class="tr-vid" src="assets/media/hover-02.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
+              <video class="tr-vid" data-src="assets/media/hover-02.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
               <span class="tr-media__tag">Foot care</span>
             </div>
             <div class="tr-body">
@@ -122,7 +887,7 @@ of <em>serenity</em>.</h1></div>
             <div class="tr-media kb-tone--walnut">
               <img src="assets/img/treatment-03-oil.jpg" alt="Therapist pouring warm oil into her palm above a guest's back" style="object-position: center 55%;">
               
-              <video class="tr-vid" src="assets/media/hover-03.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
+              <video class="tr-vid" data-src="assets/media/hover-03.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
               <span class="tr-media__tag">Body massage</span>
             </div>
             <div class="tr-body">
@@ -140,7 +905,7 @@ of <em>serenity</em>.</h1></div>
             <div class="tr-media kb-tone--walnut">
               <img src="assets/img/treatment-04-classic.jpg" alt="Therapist pressing firmly along a guest's back" style="object-position: center 45%;">
               
-              <video class="tr-vid" src="assets/media/hover-04.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
+              <video class="tr-vid" data-src="assets/media/hover-04.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
               <span class="tr-media__tag">Body massage</span>
             </div>
             <div class="tr-body">
@@ -158,7 +923,7 @@ of <em>serenity</em>.</h1></div>
             <div class="tr-media kb-tone--sand">
               <img src="assets/img/treatment-05-lymphatic.jpg" alt="Therapist's hands working gently along a guest's back" style="object-position: center 60%;">
               
-              <video class="tr-vid" src="assets/media/hover-05.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
+              <video class="tr-vid" data-src="assets/media/hover-05.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
               <span class="tr-media__tag">Body massage</span>
             </div>
             <div class="tr-body">
@@ -176,7 +941,7 @@ of <em>serenity</em>.</h1></div>
             <div class="tr-media kb-tone--clay">
               <img src="assets/img/treatment-06-head-back.jpg" alt="Close-up of a guest's neck and shoulder with a white orchid" style="object-position: center 45%;">
               
-              <video class="tr-vid" src="assets/media/hover-06.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
+              <video class="tr-vid" data-src="assets/media/hover-06.mp4" muted="" playsinline="" preload="auto" aria-hidden="true"></video>
               <span class="tr-media__tag">Targeted massage</span>
             </div>
             <div class="tr-body">
@@ -262,7 +1027,7 @@ of <em>serenity</em>.</h1></div>
         </div>
         <nav aria-label="Explore" style="display: flex; flex-direction: column; gap: 16px; font-size: 14px; letter-spacing: 0.04em;">
           <span style="font-size: 12px; letter-spacing: 0.24em; color: var(--light-butter);">EXPLORE</span>
-          <a href="#top" style="color: var(--light-rice); text-decoration: none;">Signature Treatments</a>
+          <a href="#tr-top" style="color: var(--light-rice); text-decoration: none;">Signature Treatments</a>
           <a href="index.html" style="color: var(--light-rice); text-decoration: none;">Our Outlets</a>
           <a href="index.html" style="color: var(--light-rice); text-decoration: none;">Membership</a>
         </nav>
@@ -323,7 +1088,7 @@ of <em>serenity</em>.</h1></div>
             <div class="tr-media kb-tone--glow">
               <img src="assets/img/treatment-01-foot.jpg" alt="Therapist pouring warm water over feet in a copper basin" style="object-position: center 60%;">
               
-              <video class="tr-vid" src="assets/media/hover-01.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
+              <video class="tr-vid" data-src="assets/media/hover-01.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
               <span class="tr-media__tag">Foot care</span>
             </div>
             <div class="tr-body">
@@ -341,7 +1106,7 @@ of <em>serenity</em>.</h1></div>
             <div class="tr-media kb-tone--ochre">
               <img src="assets/img/treatment-02-shoulder.jpg" alt="Therapist massaging a relaxed guest's neck and shoulders" style="object-position: center 40%;">
               
-              <video class="tr-vid" src="assets/media/hover-02.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
+              <video class="tr-vid" data-src="assets/media/hover-02.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
               <span class="tr-media__tag">Foot care</span>
             </div>
             <div class="tr-body">
@@ -359,7 +1124,7 @@ of <em>serenity</em>.</h1></div>
             <div class="tr-media kb-tone--walnut">
               <img src="assets/img/treatment-03-oil.jpg" alt="Therapist pouring warm oil into her palm above a guest's back" style="object-position: center 55%;">
               
-              <video class="tr-vid" src="assets/media/hover-03.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
+              <video class="tr-vid" data-src="assets/media/hover-03.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
               <span class="tr-media__tag">Body massage</span>
             </div>
             <div class="tr-body">
@@ -377,7 +1142,7 @@ of <em>serenity</em>.</h1></div>
             <div class="tr-media kb-tone--walnut">
               <img src="assets/img/treatment-04-classic.jpg" alt="Therapist pressing firmly along a guest's back" style="object-position: center 45%;">
               
-              <video class="tr-vid" src="assets/media/hover-04.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
+              <video class="tr-vid" data-src="assets/media/hover-04.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
               <span class="tr-media__tag">Body massage</span>
             </div>
             <div class="tr-body">
@@ -395,7 +1160,7 @@ of <em>serenity</em>.</h1></div>
             <div class="tr-media kb-tone--sand">
               <img src="assets/img/treatment-05-lymphatic.jpg" alt="Therapist's hands working gently along a guest's back" style="object-position: center 60%;">
               
-              <video class="tr-vid" src="assets/media/hover-05.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
+              <video class="tr-vid" data-src="assets/media/hover-05.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
               <span class="tr-media__tag">Body massage</span>
             </div>
             <div class="tr-body">
@@ -413,7 +1178,7 @@ of <em>serenity</em>.</h1></div>
             <div class="tr-media kb-tone--clay">
               <img src="assets/img/treatment-06-head-back.jpg" alt="Close-up of a guest's neck and shoulder with a white orchid" style="object-position: center 45%;">
               
-              <video class="tr-vid" src="assets/media/hover-06.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
+              <video class="tr-vid" data-src="assets/media/hover-06.mp4" muted="" playsinline="" preload="metadata" aria-hidden="true"></video>
               <span class="tr-media__tag">Targeted massage</span>
             </div>
             <div class="tr-body">
@@ -481,7 +1246,7 @@ of <em>serenity</em>.</h1></div>
     <p class="pc-note">Prices shown for <span class="tl" data-p0="Forest City &amp; Nusa Sentral" data-p1="Eco Botanic 2 (premium)">Forest City &amp; Nusa Sentral</span>.</p>
   </section>
 
-  <footer id="m-contact" style="background: var(--earth-cocoa); color: var(--light-rice); padding: 48px 16px 32px; display: flex; flex-direction: column; gap: 28px;">
+  <footer id="tr-m-contact" style="background: var(--earth-cocoa); color: var(--light-rice); padding: 48px 16px 32px; display: flex; flex-direction: column; gap: 28px;">
     <img src="assets/img/logo.png" alt="Kin Bali Massage" style="height: 40px; width: auto; align-self: flex-start;">
     <div style="position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px;">
       <nav aria-label="Explore" style="display: flex; flex-direction: column; gap: 10px; font-size: 16px;">
@@ -519,7 +1284,9 @@ of <em>serenity</em>.</h1></div>
   </div>
 </div>
 </div>
-<script src="assets/js/common.js"></script>
-<script src="assets/js/treatments.js"></script>
+</div>
+<script src="assets/js/common.js?v=2"></script>
+<script src="assets/js/main.js?v=2"></script>
+<script src="assets/js/treatments.js?v=2"></script>
 </body>
 </html>

@@ -673,3 +673,6 @@ a { color: var(--ink); } a:hover { color: var(--ink-brand); }
 .snd-btn[aria-pressed="true"] .ico-off, .snd-btn[aria-pressed="false"] .ico-on { display: none; }
 .cf-item[aria-hidden="true"], .cf-item[aria-hidden="true"] .cf-hit { pointer-events: none; }
 .v-m .phone { width: 100%; height: auto; overflow: visible; }
+.pg[hidden] { display: none !important; }
+/* hidden booking modal must never catch the mouse (root cause of 02/05 hover misses) */
+.bk-scrim:not(.is-open), .bk-scrim:not(.is-open) * { visibility: hidden !important; pointer-events: none !important; }

@@ -1,25 +1,57 @@
 /* Kin Bali Massage — shared: page transition, background music, footer WhatsApp */
 (function () {
   'use strict';
-  /* ---------- page transition (logo veil) ---------- */
+  /* ---------- page switching without reload (music keeps playing) ---------- */
+  var KB = window.KB = window.KB || {};
+  KB.hooks = [];
   var veil = document.querySelector('.pt-veil');
+  var PG = { home: document.getElementById('pg-home'), treatments: document.getElementById('pg-tr') };
+  function pageOf(url) { return /treatments(\.html)?$/i.test(url.pathname) ? 'treatments' : 'home'; }
+  function current() { return PG.treatments && !PG.treatments.hidden ? 'treatments' : 'home'; }
+  KB.page = current;
   function idle() { if (veil) { veil.classList.remove('is-leaving'); veil.classList.add('is-idle'); } }
   setTimeout(idle, 650);
   window.addEventListener('pageshow', function (e) { if (e.persisted) idle(); });
+  function scrollTarget(hash) {
+    var el = hash && document.getElementById(hash.slice(1));
+    window.scrollTo(0, el && !/top$/.test(hash) ? el.getBoundingClientRect().top + window.scrollY : 0);
+  }
+  function show(name, hash) {
+    Object.keys(PG).forEach(function (k) { if (PG[k]) PG[k].hidden = k !== name; });
+    document.title = PG[name].getAttribute('data-title');
+    var se = document.documentElement.style.scrollBehavior; document.documentElement.style.scrollBehavior = 'auto';
+    scrollTarget(hash);
+    document.documentElement.style.scrollBehavior = se;
+    KB.hooks.forEach(function (f) { try { f(name); } catch (x) {} });
+  }
+  function go(url, push) {
+    var name = pageOf(url);
+    if (name === current()) {
+      if (push) history.pushState({ p: name }, '', url.href);
+      if (url.hash) { var el = document.getElementById(url.hash.slice(1)); if (el) { el.scrollIntoView({ behavior: 'smooth' }); return; } }
+      window.scrollTo({ top: 0, behavior: 'smooth' }); return;
+    }
+    if (KB.closeMenu) KB.closeMenu();
+    if (veil) { veil.classList.remove('is-idle'); veil.classList.add('is-leaving'); }
+    setTimeout(function () {
+      if (push) history.pushState({ p: name }, '', url.href);
+      show(name, url.hash);
+      setTimeout(idle, 250);
+    }, 600);
+  }
   document.addEventListener('click', function (e) {
     if (e.defaultPrevented || e.button > 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
-    var a = e.target && e.target.closest ? e.target.closest('a[href$=".html"]') : null;
-    if (!a || a.target === '_blank' || !veil) return;
-    e.preventDefault();
-    var href = a.href;
-    if (window.KB && window.KB.closeMenu) window.KB.closeMenu();
-    veil.classList.remove('is-idle'); veil.classList.add('is-leaving');
-    setTimeout(function () { window.location.href = href; }, 600);
+    var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+    if (!a || a.target === '_blank') return;
+    var h = a.getAttribute('href');
+    if (!/^(index|treatments)\.html/.test(h)) return;
+    e.preventDefault(); e.stopPropagation();
+    go(new URL(a.href), true);
   }, true);
+  window.addEventListener('popstate', function () { go(new URL(location.href), false); });
 
   /* ---------- background music ---------- */
   var audio = document.getElementById('bgm');
-  var KB = window.KB = window.KB || {};
   KB.soundOn = true; KB.playing = false;
   var armed = false, EVTS = ['pointerdown', 'mousedown', 'click', 'keydown', 'touchend'];
   function setUI() {
